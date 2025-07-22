@@ -33,7 +33,7 @@ $customizerHidden = 'customizer-hide';
         <!-- /Logo -->
 
         <!-- Register Card -->
-        <h4 class="mb-2">Starts here </h4>
+        <h4 class="mb-2">Starts here</h4>
         <p class="mb-4">Make your app management.</p>
 
         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
