@@ -17,15 +17,7 @@ $customizerHidden = 'customizer-hide';
   <div class="authentication-inner row m-0">
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
-      <div class="flex-row text-center mx-auto">
-        <img src="{{asset('assets/img/pages/forgot-password-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/forgot-password-light.png" data-app-dark-img="pages/forgot-password-dark.png">
-        <div class="mx-auto">
-          <h3>No worries, we will send you instructions 👩🏻‍💻</h3>
-          <p>
-            We can help you reset your password and security info. First, enter <br> your email address and click on send reset link.
-          </p>
-        </div>
-      </div>
+      
     </div>
     <!-- /Left Text -->
     <!-- Forgot Password -->
@@ -34,8 +26,7 @@ $customizerHidden = 'customizer-hide';
         <!-- Logo -->
         <div class="app-brand justify-content-center mb-4">
           <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros')</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{config('variables.templateName')}}</span>
+            
           </a>
         </div>
         <!-- /Logo -->
