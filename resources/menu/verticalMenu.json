@@ -7,10 +7,41 @@
       "slug": "pages-home"
     },
     {
-      "url": "/page-2",
+      "url": "/layout/show/{{ $layouts ? $layouts->id : 1 }}",
       "icon": "menu-icon tf-icons bx bx-file",
-      "name": "Page 2",
-      "slug": "pages-page-2"
+      "name": "Layout",
+      "slug": "pages-layout-show"
+    },
+
+    {
+      "url": "/banner/show/{{ $banners ? $banners->id : 1 }}",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Banners",
+      "slug": "pages-banner-show"
+    },
+
+    {
+      "url": "/homes/show/{{ $homes ? $homes->id : 1 }}",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Home",
+      "slug": "pages-home-show"
+    },
+
+    {
+      "url": "/nosotros/show/{{ $nosotros ? $nosotros->id : 1 }}",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Nosotros",
+      "slug": "pages-nosotros-show"
+    },
+
+    {
+      "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Contacto",
+      "slug": "pages-contacto-show"
     }
+
+    
+
   ]
 }

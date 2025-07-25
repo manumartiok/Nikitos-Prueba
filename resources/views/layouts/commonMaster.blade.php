@@ -17,6 +17,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
 
+  <!-- Vue -->
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+   <script src="{{ asset('js/vue.js') }}" defer></script>
+
   <!-- Include Styles -->
   @include('layouts/sections/styles')
 
@@ -29,7 +34,23 @@
   @yield('layoutContent')
   <!--/ Layout Content -->
 
-  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/8noeqswa0qrq9xvu53p0tqe2zyfrrnke3p82kdezojs3slh6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+          tinymce.init({
+        selector: 'textarea.editor',
+        width: '100%', // O usa un valor más alto si necesitas un tamaño fijo, por ejemplo, '800px'
+        height: 300,
+        menubar: false,
+        plugins: 'advlist autolink lists link image charmap preview anchor code fontselect fontsizeselect',
+        toolbar: 'undo redo | bold italic | fontselect fontsizeselect | alignleft aligncenter alignright | bullist numlist outdent indent | link image | code',
+        fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
+        content_style: 'body { font-family:Arial; font-size:14px; }'
+    });
+  });
+  </script>
 
   <!-- Include Scripts -->
   @include('layouts/sections/scripts')
