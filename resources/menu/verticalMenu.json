@@ -39,6 +39,65 @@
       "icon": "menu-icon tf-icons bx bx-file",
       "name": "Contacto",
       "slug": "pages-contacto-show"
+    },
+
+    {
+      "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Distribuidores",
+      "slug": "pages-contacto-show"
+    },
+
+
+    { 
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Productos",
+      "slug": "productos",
+      "submenu":[
+        {
+          "url": "/categoria",
+          "icon": "menu-icon tf-icons bx bx-file",
+          "name": "Categoria de productos",
+          "slug": "pages-categoria"
+        },
+        
+        {
+          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "icon": "menu-icon tf-icons bx bx-file",
+          "name": "Unidad de productos",
+          "slug": "pages-contacto-show"
+        }
+
+      ]
+    },
+
+     { 
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Recetas",
+      "slug": "recetas",
+      "submenu":[
+        {
+          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "icon": "menu-icon tf-icons bx bx-file",
+          "name": "Recetas",
+          "slug": "pages-contacto-show"
+        },
+
+        {
+          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "icon": "menu-icon tf-icons bx bx-file",
+          "name": "Ingredientes",
+          "slug": "pages-contacto-show"
+        },
+        
+        {
+          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "icon": "menu-icon tf-icons bx bx-file",
+          "name": "Pasos",
+          "slug": "pages-contacto-show"
+        }
+
+      ]
     }
 
     

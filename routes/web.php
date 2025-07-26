@@ -49,6 +49,15 @@ $controller_path = 'App\Http\Controllers';
     // Menu Contacto
     Route::get('/contacto/show/{contacto_id}', $controller_path . '\ContactoController@show')->name('pages-contacto-show');
     Route::post('/contacto/update', $controller_path . '\ContactoController@update')->name('pages-contacto-update');
+
+    // Menu Categorias
+    Route::get('/categoria', $controller_path . '\CategoriaProductoController@index')->name('pages-categoria'); 
+    Route::get('/categoria/create', $controller_path . '\CategoriaProductoController@create')->name('pages-categoria-create');
+    Route::post('/categoria/store', $controller_path . '\CategoriaProductoController@store')->name('pages-categoria-store');
+    Route::get('/categoria/show/{categoria_id}', $controller_path . '\CategoriaProductoController@show')->name('pages-categoria-show');
+    Route::post('/categoria/update', $controller_path . '\CategoriaProductoController@update')->name('pages-categoria-update');
+    Route::get('/categoria/destroy/{categoria_id}', $controller_path . '\CategoriaProductoController@destroy')->name('pages-categoria-destroy');
+    Route::get('/categoria/switch/{categoria_id}', $controller_path . '\CategoriaProductoController@switch')->name('pages-categoria-switch');
     
 });
 
