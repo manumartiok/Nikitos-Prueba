@@ -102,8 +102,18 @@ class CategoriaProductoController extends Controller
 
     public function destroy($categorias_id){
         $categorias = CategoriaProducto::find($categorias_id);
+
+        if ($categorias) {
+        // Obtener la ruta de la imagen
+        $imagePath = str_replace('/storage/', 'public/', $categorias->foto_categoria); // Convierte la URL a la ruta de almacenamiento
+        
+        // Eliminar la imagen del sistema de archivos
+        if (Storage::exists($imagePath)) {
+            Storage::delete($imagePath);
+        }
     
         $categorias->delete();
+    }
         
         return redirect()->route('pages-categoria');
     }

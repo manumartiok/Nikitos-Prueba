@@ -62,10 +62,10 @@
         },
         
         {
-          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "url": "/producto",
           "icon": "menu-icon tf-icons bx bx-file",
           "name": "Unidad de productos",
-          "slug": "pages-contacto-show"
+          "slug": "pages-producto"
         }
 
       ]
@@ -77,24 +77,24 @@
       "slug": "recetas",
       "submenu":[
         {
-          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "url": "/receta",
           "icon": "menu-icon tf-icons bx bx-file",
           "name": "Recetas",
-          "slug": "pages-contacto-show"
+          "slug": "pages-receta"
         },
 
         {
-          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "url": "/ingredientes",
           "icon": "menu-icon tf-icons bx bx-file",
           "name": "Ingredientes",
-          "slug": "pages-contacto-show"
+          "slug": "pages-ingredientes"
         },
         
         {
-          "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+          "url": "/preparacion",
           "icon": "menu-icon tf-icons bx bx-file",
           "name": "Pasos",
-          "slug": "pages-contacto-show"
+          "slug": "pages-preparacion"
         }
 
       ]

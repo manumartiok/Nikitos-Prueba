@@ -58,6 +58,42 @@ $controller_path = 'App\Http\Controllers';
     Route::post('/categoria/update', $controller_path . '\CategoriaProductoController@update')->name('pages-categoria-update');
     Route::get('/categoria/destroy/{categoria_id}', $controller_path . '\CategoriaProductoController@destroy')->name('pages-categoria-destroy');
     Route::get('/categoria/switch/{categoria_id}', $controller_path . '\CategoriaProductoController@switch')->name('pages-categoria-switch');
+
+    // Menu Productos
+    Route::get('/producto', $controller_path . '\ProductoController@index')->name('pages-producto'); 
+    Route::get('/producto/create', $controller_path . '\ProductoController@create')->name('pages-producto-create');
+    Route::post('/producto/store', $controller_path . '\ProductoController@store')->name('pages-producto-store');
+    Route::get('/producto/show/{producto_id}', $controller_path . '\ProductoController@show')->name('pages-producto-show');
+    Route::post('/producto/update', $controller_path . '\ProductoController@update')->name('pages-producto-update');
+    Route::get('/producto/destroy/{producto_id}', $controller_path . '\ProductoController@destroy')->name('pages-producto-destroy');
+    Route::get('/producto/switch/{producto_id}', $controller_path . '\ProductoController@switch')->name('pages-producto-switch');
+
+    // Menu Recetas
+    Route::get('/receta', $controller_path . '\RecetaController@index')->name('pages-receta'); 
+    Route::get('/recetas/create', $controller_path . '\RecetaController@create')->name('pages-receta-create');
+    Route::post('/recetas/store', $controller_path . '\RecetaController@store')->name('pages-receta-store');
+    Route::get('/recetas/show/{receta_id}', $controller_path . '\RecetaController@show')->name('pages-receta-show');
+    Route::post('/recetas/update', $controller_path . '\RecetaController@update')->name('pages-receta-update');
+    Route::get('/recetas/destroy/{receta_id}', $controller_path . '\RecetaController@destroy')->name('pages-receta-destroy');
+    Route::get('/recetas/switch/{receta_id}', $controller_path . '\RecetaController@switch')->name('pages-receta-switch');
+
+    // Menu Ingredientes
+    Route::get('/ingredientes', $controller_path . '\IngredienteController@index')->name('pages-ingredientes'); 
+    Route::get('/ingredientes/create', $controller_path . '\IngredienteController@create')->name('pages-ingredientes-create');
+    Route::post('/ingredientes/store', $controller_path . '\IngredienteController@store')->name('pages-ingredientes-store');
+    Route::get('/ingredientes/show/{ingrediente_id}', $controller_path . '\IngredienteController@show')->name('pages-ingredientes-show');
+    Route::post('/ingredientes/update', $controller_path . '\IngredienteController@update')->name('pages-ingredientes-update');
+    Route::get('/ingredientes/destroy/{ingrediente_id}', $controller_path . '\IngredienteController@destroy')->name('pages-ingredientes-destroy');
+    Route::get('/ingredientes/switch/{ingrediente_id}', $controller_path . '\IngredienteController@switch')->name('pages-ingredientes-switch');
+
+    // Menu Preparacion
+    Route::get('/preparacion', $controller_path . '\PreparacionController@index')->name('pages-preparacion'); 
+    Route::get('/preparacion/create', $controller_path . '\PreparacionController@create')->name('pages-preparacion-create');
+    Route::post('/preparacion/store', $controller_path . '\PreparacionController@store')->name('pages-preparacion-store');
+    Route::get('/preparacion/show/{ingrediente_id}', $controller_path . '\PreparacionController@show')->name('pages-preparacion-show');
+    Route::post('/preparacion/update', $controller_path . '\PreparacionController@update')->name('pages-preparacion-update');
+    Route::get('/preparacion/destroy/{ingrediente_id}', $controller_path . '\PreparacionController@destroy')->name('pages-preparacion-destroy');
+    Route::get('/preparacion/switch/{ingrediente_id}', $controller_path . '\PreparacionController@switch')->name('pages-preparacion-switch');
     
 });
 
