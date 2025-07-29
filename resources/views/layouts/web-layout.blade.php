@@ -52,12 +52,22 @@
     </div>
 
     <!-- navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50">
-        <div class="nav-layout bg-white flex justify-between items-center mx-auto px-5">
-                
-                <img src="{{$layout->logo_url}}" alt="Logo" class="h-[67px] w-[138px]">
-                
-            <div class="flex justify-between h-[22px] w-[537px] ">
+        <nav class="fixed top-0 left-0 w-full z-50">
+        <div id="navbar" class="nav-layout bg-white flex items-center justify-between mx-auto px-5 max-w-[1258px] h-[80px]">
+            
+            <!-- Logo -->
+            <img src="{{$layout->logo_url}}" alt="Logo" class="h-[67px] w-[138px] flex-shrink-0">
+            
+            <!-- Botón Hamburguesa (solo en móvil) -->
+            <button id="menu-toggle" class="lg:hidden text-2xl ml-auto">
+            <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Contenedor del menú y botón -->
+            <div class="hidden lg:flex items-center justify-between flex-1 max-w-[1000px] mx-auto gap-8">
+            
+            <!-- Menú centrado -->
+            <div class="flex-1 flex justify-center gap-6">
                 <a href="{{ route('home') }}" class="text-layout {{ Request::is('home') ? 'font-bold' : '' }}">Home</a>
                 <a href="{{ route('productos') }}" class="text-layout {{ Request::is('productos') ? 'font-bold' : '' }}">Productos</a>
                 <a href="{{ route('ubicacion') }}" class="text-layout {{ Request::is('donde-comprar') ? 'font-bold' : '' }}">Donde comprar</a>
@@ -65,14 +75,35 @@
                 <a href="{{ route('nosotros') }}" class="text-layout {{ Request::is('nosotros') ? 'font-bold' : '' }}">Nosotros</a>
                 <a href="{{ route('contacto') }}" class="text-layout {{ Request::is('contacto') ? 'font-bold' : '' }}">Contacto</a>
             </div>
-            <div class="btn-layout flex h-[42px] w-[165px]  items-center" style="background-color:#FFA221;">
+
+            <!-- Botón Ingresar a la derecha -->
+            <div class="btn-layout h-[42px] w-[165px] flex items-center justify-center" style="background-color:#FFA221;">
                 <button class="w-full flex justify-center gap-2 mt-1">
-                    <p class="h-[22px] w-[60px]" >Ingresar</p> 
-                    <i class="fa-solid fa-lock text-white h-[20px] w-[20px]"></i>
+                <p class="h-[22px] w-[60px]">Ingresar</p>
+                <i class="fa-solid fa-lock text-white h-[20px] w-[20px]"></i>
                 </button>
             </div>
+
+            </div>
         </div>
-    </nav>
+
+        <!-- Menú mobile -->
+        <div id="mobile-menu" class="lg:hidden hidden flex flex-col items-center gap-4 bg-white py-3">
+            <a href="{{ route('home') }}" class="text-layout">Home</a>
+            <a href="{{ route('productos') }}" class="text-layout">Productos</a>
+            <a href="{{ route('ubicacion') }}" class="text-layout">Donde comprar</a>
+            <a href="{{ route('recetas') }}" class="text-layout">Recetas</a>
+            <a href="{{ route('nosotros') }}" class="text-layout">Nosotros</a>
+            <a href="{{ route('contacto') }}" class="text-layout">Contacto</a>
+            <div class="btn-layout h-[42px] w-[165px] flex items-center justify-center" style="background-color:#FFA221;">
+            <button class="w-full flex justify-center gap-2 mt-1">
+                <p class="h-[22px] w-[60px]">Ingresar</p>
+                <i class="fa-solid fa-lock text-white h-[20px] w-[20px]"></i>
+            </button>
+            </div>
+        </div>
+        </nav>
+
 
     <!-- Contenido -->
 
@@ -85,8 +116,8 @@
 
     <footer class="footer-layout flex flex-col justify-between ">
 
-        <div class="h-full flex justify-between  text-black  mx-[98px]">
-            <div class="content-center basis-1/4 flex flex-col items-center justify-center gap-6">
+        <div class="h-full flex flex-wrap justify-center lg:justify-between  text-black ">
+            <div class="content-center basis-full  lg:basis-1/4 flex flex-col items-center justify-center gap-6">
                 <div>
                     <img src="{{$layout->logo_url}}" alt="" class="h-[67px] w-[140px]">
                 </div>
@@ -95,7 +126,7 @@
                     <i class="fa-brands fa-instagram text-white h-[20px] w-[20px]"></i>
                 </div> 
             </div>
-            <div class="content-center basis-1/4 flex items-center">
+            <div class="content-center hidden lg:flex  lg:basis-1/4 flex items-center">
                 <ul class="">
                     <h3>Secciones</h3>
                     <div class="flex justify-between pt-6 space-x-11">
@@ -114,7 +145,7 @@
                     </div>
                 </ul>
             </div>
-            <div class="content-center basis-1/4 space-y-4">
+            <div class="content-center basis-full  lg:basis-1/4 space-y-4 flex flex-col items-center lg:block">
                 <h3>Suscribete al Newsletter</h3>
                 <form class="flex  h-[45px] w-[298px]">
                     <input type="email" placeholder="Email" class="rounded-l-xl px-4 text-black placeholder-black focus:outline-none">
@@ -123,10 +154,10 @@
                     </button>
                 </form>
             </div>
-            <div class="content-center basis-1/4 ">
+            <div class="content-center basis-full  lg:basis-1/4 flex flex-col items-center lg:block ">
                 @foreach($contactos as $contacto)
                 <h3>Contacto</h3>
-                <div class="space-y-4 pt-6">
+                <div class="space-y-4 pt-6 flex flex-col items-center lg:items-start">
                     <div class="flex space-x-1">
                         <i class="fa-solid fa-location-dot text-white h-[20px] w-[20px]"></i><a href="{{$contacto->ubicacion_link}}" class="text-layout">{{$contacto->ubicacion}}</a>
                     </div>
@@ -172,6 +203,23 @@
         content_style: 'body { font-family:Arial; font-size:14px; }'
     });
 
+});
+
+document.addEventListener("DOMContentLoaded", function() { // este renglon espera a que se cargue todo el html antes de ejecutar el codigo
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navbar = document.querySelector('.nav-layout'); // Usamos class en vez de ID
+
+    toggleBtn.addEventListener('click', function () {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+
+        if (isHidden) {
+            navbar.classList.add('nav-layout-open');
+        } else {
+            navbar.classList.remove('nav-layout-open');
+        }
+    });
 });
     </script>
 @yield('scripts')  <!-- Asegúrate de tener esta línea aquí -->
