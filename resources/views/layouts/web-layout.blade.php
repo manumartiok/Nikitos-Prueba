@@ -69,16 +69,16 @@
             <!-- Menú centrado -->
             <div class="flex-1 flex justify-center gap-6">
                 <a href="{{ route('home') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('home') ? 'font-bold' : '' }}">Home</a>
-                <a href="{{ route('productos') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('productos') ? 'font-bold' : '' }}">Productos</a>
+                <a href="{{ route('productos') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('productos*') ? 'font-bold' : '' }}">Productos</a>
                 <a href="{{ route('ubicacion') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('donde-comprar') ? 'font-bold' : '' }}">Donde comprar</a>
-                <a href="{{ route('recetas') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('recetas') ? 'font-bold' : '' }}">Recetas</a>
+                <a href="{{ route('recetas') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('recetas*') ? 'font-bold' : '' }}">Recetas</a>
                 <a href="{{ route('nosotros') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('nosotros') ? 'font-bold' : '' }}">Nosotros</a>
                 <a href="{{ route('contacto') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('contacto') ? 'font-bold' : '' }}">Contacto</a>
             </div>
 
             <!-- Botón Ingresar a la derecha -->
-            <div class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center" style="background-color:#FFA221;">
-                <button class="w-full flex justify-center gap-2 mt-1">
+            <div class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300" style="background-color:#FFA221;">
+                <button class="w-full flex justify-center gap-2 mt-1 ">
                 <p class="nunitosans font-[600] text-[16px] h-[22px] w-[60px]">Ingresar</p>
                 <i class="fa-solid fa-lock text-white h-[20px] w-[20px]"></i>
                 </button>

@@ -11,12 +11,12 @@ class Receta extends Model
 
        public function ingredientes()
 {
-    return $this->hasMany(Ingrediente::class, 'receta_id');
+    return $this->hasMany(Ingrediente::class, 'recetas_id');
 }
 
    public function preparacion()
 {
-    return $this->hasMany(Preparacion::class, 'receta_id');
+    return $this->hasMany(Preparacion::class, 'recetas_id');
 
 }
 

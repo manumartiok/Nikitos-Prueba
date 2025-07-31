@@ -79,7 +79,7 @@ $configData = Helper::appClasses();
             <!-- Seccion 4  -->
             <div class="mb-3">
               <label class="form-label" for="texto1">Texto 4</label>
-              <textarea  name="texto1" class="form-control editor" placeholder="Texto">{{ $nosotros->texto4 ?? '' }}</textarea>
+              <textarea  name="texto4" class="form-control editor" placeholder="Texto">{{ $nosotros->texto4 ?? '' }}</textarea>
             </div>
 
             <div class="mb-3">

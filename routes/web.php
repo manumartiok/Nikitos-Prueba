@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Receta;
+use App\Models\CategoriaProducto;
+use App\Models\Producto;
+use App\Models\Ingrediente;
+use App\Models\Preparacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +111,12 @@ Route::get('/productos', function () {
     return view('content.web.producto');
 })->name('productos');
 
+Route::get('/productos/categorias/{id}', function ($id) {
+    // Cargar el producto específico junto con el detalleTexto usando el ID
+    $categoria=CategoriaProducto::with('productos')->findOrFail($id);
+    return view('content.web.producto-ctg', compact('categoria'));
+})->name('producto.categoria');
+
 Route::get('/donde-comprar', function () {
     return view('content.web.ubicacion');
 })->name('ubicacion');
@@ -113,6 +124,12 @@ Route::get('/donde-comprar', function () {
 Route::get('/recetas', function () {
     return view('content.web.receta');
 })->name('recetas');
+
+Route::get('/recetas/recetas-detalle/{id}', function ($id) {
+    // Cargar el producto específico junto con el detalleTexto usando el ID
+    $receta =Receta::with('ingredientes','preparacion')->findOrFail($id);
+    return view('content.web.receta-detalle', compact('receta'));
+})->name('receta.detalle');
 
 Route::get('/nosotros', function () {
     return view('content.web.nosotros');
