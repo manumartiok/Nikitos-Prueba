@@ -77,11 +77,32 @@
             </div>
 
             <!-- Botón Ingresar a la derecha -->
-            <div class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300" style="background-color:#FFA221;">
-                <button class="w-full flex justify-center gap-2 mt-1 ">
-                <p class="nunitosans font-[600] text-[16px] h-[22px] w-[60px]">Ingresar</p>
-                <i class="fa-solid fa-lock text-white h-[20px] w-[20px]"></i>
+            <div class="relative">
+                <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 flex justify-center gap-2  " style="background-color:#FFA221;">
+                <p class="nunitosans font-[600] text-[16px]">Ingresar</p>
+                <i class="fa-solid fa-lock text-white "></i>
                 </button>
+                
+                <!-- Modal para el Formulario de Inicio de Sesión -->
+                <div  class="loginModal fixed bg-black bg-opacity-50 hidden flex items-center justify-center z-50 mx-auto  max-w-[1258px]">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-[300px]">
+                        <h2 class="text-lg font-bold mb-4 text-center">Iniciar Sesión</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label for="username" class="block text-sm font-medium text-gray-700">Usuario</label>
+                                <input type="text" id="username" name="username" class="mt-1 p-2 w-full border rounded" value="marianor" placeholder="Usuario">
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                                <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded" placeholder="Contraseña">
+                            </div>
+                            <div class="text-right mb-4">
+                                <a href="#" class="text-sm text-orange-500">¿Olvidaste la contraseña?</a>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
             </div>
@@ -95,11 +116,31 @@
             <a href="{{ route('recetas') }}" class="nunitosans font-[400] text-[16px] ">Recetas</a>
             <a href="{{ route('nosotros') }}" class="nunitosans font-[400] text-[16px] ">Nosotros</a>
             <a href="{{ route('contacto') }}" class="nunitosans font-[400] text-[16px] ">Contacto</a>
-            <div class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center" style="background-color:#FFA221;">
-            <button class="w-full flex justify-center gap-2 mt-1">
-                <p class="nunitosans font-[400] text-[16px]  h-[22px] w-[60px]">Ingresar</p>
-                <i class="fa-solid fa-lock text-white h-[20px] w-[20px]"></i>
-            </button>
+            <div class="relative">
+                <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 flex justify-center gap-2  " style="background-color:#FFA221;">
+                <p class="nunitosans font-[600] text-[16px]">Ingresar</p>
+                <i class="fa-solid fa-lock text-white "></i>
+                </button>   
+
+                <div  class="loginModal fixed bg-black bg-opacity-50 hidden flex items-center justify-center z-50 mx-auto  max-w-[1258px]">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-[300px]">
+                        <h2 class="text-lg font-bold mb-4 text-center">Iniciar Sesión</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label for="username" class="block text-sm font-medium text-gray-700">Usuario</label>
+                                <input type="text" id="username" name="username" class="mt-1 p-2 w-full border rounded" value="marianor" placeholder="Usuario">
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                                <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded" placeholder="Contraseña">
+                            </div>
+                            <div class="text-right mb-4">
+                                <a href="#" class="text-sm text-orange-500">¿Olvidaste la contraseña?</a>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         </nav>
@@ -221,6 +262,25 @@ document.addEventListener("DOMContentLoaded", function() { // este renglon esper
             navbar.classList.add('nav-layout-open');
         } else {
             navbar.classList.remove('nav-layout-open');
+        }
+    });
+
+        // Manejo de los botones "Ingresar" y sus modales
+        const loginButtons = document.querySelectorAll('.btn-layout');
+        loginButtons.forEach(button => {
+        const loginModal = button.nextElementSibling; // Selecciona el modal siguiente al botón
+        if (loginModal && loginModal.classList.contains('loginModal')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault(); // Evita comportamiento por defecto del formulario
+                loginModal.classList.toggle('hidden');
+            });
+
+            // Cerrar el modal al hacer clic fuera de él
+            loginModal.addEventListener('click', function(e) {
+                if (e.target === loginModal) {
+                    loginModal.classList.add('hidden');
+                }
+            });
         }
     });
 });

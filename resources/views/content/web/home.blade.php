@@ -24,18 +24,18 @@
 
 @section('content')
 <!-- Video -->
-<div class="relative h-[768.25px] w-full overflow-hidden">
-    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+<div class="relative h-[768.25px] w-full ">
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
         <source src="{{ $casa->video }}" type="video/mp4">
         Tu navegador no soporta video HTML5.
     </video>
-    <div class="absolute inset-0 z-10 flex flex-col justify-center text-[#FFFFFF] gap-8 ">
+    <div class="absolute inset-0 z-10 flex flex-col justify-center text-[#FFFFFF] gap-6  max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] ">
         <h1 class=" nunito font-[600] text-[85px]">{!!$casa->video_tmayor!!}</h1>
-        <div class=" nunito font-[600] text-[24px]">
+        <div class=" nunito font-[600] text-[24px] leading-relaxed">
           <h2>{!!$casa->video_tmenor!!}</h2>
         </div>
         <div class="mt-4 flex gap-4">
-            <button class="bg-white rounded-[20px] h-[42px] w-[214px] text-black px-4 py-2 rounded nunitosans font-[600] text-[16px] hover:scale-105 transition-transform duration-300">
+            <button class="bg-white rounded-[20px] h-[42px] w-[214px] text-black px-4 py-2 nunitosans font-[600] text-[16px] hover:scale-105 transition-transform duration-300">
               <a href="">Descargar catálogo</a>
               <i class="fa-solid fa-chevron-right"></i>
 
@@ -46,11 +46,11 @@
 </div>
 
 <!-- Nosotros -->
-<div class="h-[695.63px] w-full relative ">
-    <img src="{{ $casa->banner_foto }}" alt="" class="absolute w-full h-full object-cover ">
-    <div class="absolute max-w-[1218px] mx-auto">
+<div class="h-[830px] w-full relative ">
+    <img src="{{ $casa->banner_foto }}" alt="" class="absolute w-full h-full object-center ">
+    <div class="absolute inset-0 flex flex-col justify-center text-[#FFFFFF] max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] gap-10">
         <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>
-        <div class="">
+        <div class="w-1/2">
             <h2 class="nunitosans font-[400] text-[20px] leading-relaxed">{!!$casa->banner_tmenor!!}</h2>
         </div>
         <button class="nunitosans font-[600] text-[16px] h-[42px] w-[164px] rounded-[20px] text-[#FFA221] bg-[#FFFFFF] hover:scale-105 transition-transform duration-300">Mas info</button>
@@ -58,17 +58,19 @@
 </div>
 
 <!-- Categorías -->
-<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
+<div class="h-full max-w-[1258px] mx-auto w-full  px-[5%] lg:px-[0%] flex flex-col gap-6">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo1 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($categorias->take(4) as $categoria)
-            <div class="relative group h-[321px] sm:w-[297px] flex flex-col items-center text-center justify-center rounded-[8px] overflow-hidden">
+            <div class="relative group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-center rounded-[8px] overflow-hidden">
                 <!-- Fondo con hover oscuro -->
                 <div class="absolute inset-0 transition duration-300 group-hover:brightness-90" style="background-color:{{ $categoria->color_categoria }}"></div>
 
                 <!-- Contenido -->
-                <div class="relative z-10 flex flex-col items-center justify-center h-full">
-                    <img src="{{ $categoria->foto_categoria }}" alt="{{ $categoria->nombre_categoria }}" class="h-32 object-cover mb-2">
+                <div class="relative z-10 flex flex-col items-center justify-between h-full">
+                    <div class="h-[179px] w-[297px] p-4 flex justify-center">
+                        <img src="{{ $categoria->foto_categoria }}" alt="{{ $categoria->nombre_categoria }}" class="h-full object-cover">
+                    </div>
                     <h1 class="text-white nunitosans font-[700] text-[25px]">{{ $categoria->nombre_categoria }}</h1>
 
                     <!-- Enlace con subrayado animado -->
@@ -86,17 +88,19 @@
 </div>
 
 <!-- Destacados -->
-<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
+<div class="h-full max-w-[1258px] mx-auto w-full mt-[60px] px-[5%] lg:px-[0%] flex flex-col gap-6">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo2 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($agrupados as $producto)
-            <div class="group h-[321px] sm:w-[297px] flex flex-col items-center text-center justify-center border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
-                <img src="{{ $producto->producto_foto ?? $producto->categoria->foto_categoria }}" alt="{{ $producto->producto_nombre }}" class="h-32 object-cover mb-2">
-                <h2 class="nunitosans font-[800] text-[13px]" style="color:{{$producto->categoria->color_categoria}}">{{$producto->categoria->nombre_categoria}}</h2>
+            <div class="group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-between border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
+                <div class="h-[179px] w-full p-4 flex justify-center">
+                    <img src="{{ $producto->producto_foto ?? $producto->categoria->foto_categoria }}" alt="{{ $producto->producto_nombre }}" class="h-full object-center">
+                </div>
+                <h2 class="nunitosans font-[800] text-[18px]" style="color:{{$producto->categoria->color_categoria}}">{{$producto->categoria->nombre_categoria}}</h2>
                 <h1 class="text-black nunitosans font-[700] text-[21px]">{{ $producto->producto_nombre }}</h1>
 
                 <!-- Enlace con línea animada -->
-                <a href="" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+                <a href="" class="nunitosans font-[600] text-[16px]  relative group-hover:text-black transition">
                     Ver producto
                     <span class="block h-[2px] w-0 group-hover:w-2/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
                 </a>
@@ -106,7 +110,7 @@
 </div>
 
 <!-- Recetas -->
-<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
+<div class="h-full max-w-[1258px] mx-auto w-full my-[60px] px-[5%] lg:px-[0%] flex flex-col gap-6">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo3 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($recetas->take(3) as $receta)

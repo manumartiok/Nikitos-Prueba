@@ -84,12 +84,12 @@
                 <div>
                     <h1 class="text-[28px] font-[700] text-[#030303]">Productos relacionados</h1>
                 </div>
-                <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     @foreach($otrosProductos as $producto)
-                    <div class="group h-[321px] sm:w-[297px] flex flex-col border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden p-6">
+                    <div class="group h-[321px] sm:w-[297px] p-6 flex flex-col justify-between border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden">
                         
-                        <div class="max-h-[179px] w-full flex items-center pt-7 pb-10">
-                            <img src="{{ $producto->producto_foto }}" alt="{{ $producto->producto_nombre }}" class="h-full w-full object-contain">
+                        <div class="h-[179px] w-full p-4 flex justify-center">
+                            <img src="{{ $producto->producto_foto }}" alt="{{ $producto->producto_nombre }}" class="h-full object-center">
                         </div>
 
                         <div class="flex-1 flex flex-col items-center justify-around text-center">

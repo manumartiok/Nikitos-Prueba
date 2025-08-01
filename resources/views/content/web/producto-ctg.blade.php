@@ -41,9 +41,11 @@
         <!-- productos  -->
         <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($categoria->productos as $producto)
-                <div class="group h-[321px] sm:w-[297px] flex flex-col items-center text-center justify-center border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
-                    <img src="{{ $producto->producto_foto ?? $producto->categoria->foto_categoria }}" alt="{{ $producto->producto_nombre }}" class="h-32 object-cover mb-2">
-                    <h2 class="nunitosans font-[800] text-[13px]" style="color:{{$producto->categoria->color_categoria}}">{{$producto->categoria->nombre_categoria}}</h2>
+                <div class="group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-between border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
+                    <div class="h-[179px] w-full p-4 flex justify-center">
+                        <img src="{{ $producto->producto_foto ?? $producto->categoria->foto_categoria }}" alt="{{ $producto->producto_nombre }}" class="h-full object-cover">
+                    </div>
+                    <h2 class="nunitosans font-[800] text-[18px]" style="color:{{$producto->categoria->color_categoria}}">{{$producto->categoria->nombre_categoria}}</h2>
                     <h1 class="text-black nunitosans font-[700] text-[21px]">{{ $producto->producto_nombre }}</h1>
 
                     <!-- Enlace con línea animada -->

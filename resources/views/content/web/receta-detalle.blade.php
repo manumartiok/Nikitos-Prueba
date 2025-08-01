@@ -22,8 +22,8 @@
 <!-- Recetas  -->
 <!-- Datos  -->
 <div class="flex flex-col md:flex-row h-full md:h-[383px] gap-6 mb-[70px] mt-16">
-    <div class="h-full w-full md:w-1/2">
-        <img src="{{$receta->receta_foto}}" alt="" class="h-full w-full rounded-[12px] md:rounded-[0px] md:rounded-r-[12px] ">
+    <div class=" md:w-1/2">
+        <img src="{{$receta->receta_foto}}" alt="" class="h-full w-full rounded-[12px] md:rounded-[0px] md:rounded-r-[12px] flex-shrink-0">
     </div>
     <div class="h-full w-full md:w-1/2 flex flex-col gap-6">
         <h1 class="nunito text-[35px] font-[700] text-[#030303]">{{$receta->receta_nombre}}</h1>
