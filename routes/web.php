@@ -117,6 +117,12 @@ Route::get('/productos/categorias/{id}', function ($id) {
     return view('content.web.producto-ctg', compact('categoria'));
 })->name('producto.categoria');
 
+Route::get('/productos/producto/{id}', function ($id) {
+    // Cargar el producto específico junto con el detalleTexto usando el ID
+    $producto=Producto::with('categoria')->findOrFail($id);
+    return view('content.web.producto-detalle', compact('producto'));
+})->name('producto.detalle');
+
 Route::get('/donde-comprar', function () {
     return view('content.web.ubicacion');
 })->name('ubicacion');

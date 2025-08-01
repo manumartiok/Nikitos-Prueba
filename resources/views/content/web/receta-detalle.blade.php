@@ -9,7 +9,7 @@
 
 @extends('layouts.web-layout')
 
-@section('title', 'Nosotros')
+@section('title', 'Recetas')
 
 @section('content')
 <!-- banner  -->
@@ -20,37 +20,37 @@
     </div>
 </div>
 <!-- Recetas  -->
-<div class="h-full w-full  py-[5%] pl-[5%] md:pl-[0] pr-[5%]">
-    <!-- Datos  -->
-    <div class="flex flex-col md:flex-row h-full md:h-[383px] gap-6">
-        <div class="h-full w-full md:w-1/2 ">
-            <img src="{{$receta->receta_foto}}" alt="" class="h-full w-full rounded-[12px] md:rounded-[0px] md:rounded-r-[12px]">
+<!-- Datos  -->
+<div class="flex flex-col md:flex-row h-full md:h-[383px] gap-6 mb-[70px] mt-16">
+    <div class="h-full w-full md:w-1/2">
+        <img src="{{$receta->receta_foto}}" alt="" class="h-full w-full rounded-[12px] md:rounded-[0px] md:rounded-r-[12px] ">
+    </div>
+    <div class="h-full w-full md:w-1/2 flex flex-col gap-6">
+        <h1 class="nunito text-[35px] font-[700] text-[#030303]">{{$receta->receta_nombre}}</h1>
+        <div>
+            <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Tiempo de preparación</h3>
+            <h4 class="nunitosans text-[18px] font-[400] text-[#5C5C5C]">{{$receta->receta_preparacion}}</h4>
         </div>
-        <div class="h-full w-full md:w-1/2 flex flex-col gap-6">
-            <h1 class="nunito text-[35px] font-[700] text-[#030303]">{{$receta->receta_nombre}}</h1>
-            <div>
-                <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Tiempo de preparación</h3>
-                <h4 class="nunitosans text-[18px] font-[400] text-[#5C5C5C]">{{$receta->receta_preparacion}}</h4>
-            </div>
-            <div>
-                <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Tiempo de cocción</h3>
-                <h4 class="nunitosans text-[18px] font-[400] text-[#5C5C5C]">{{$receta->receta_coccion}}</h4>
-            </div>
-            <div>
-                <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Porciones</h3>
-                <h4 class="nunitosans text-[18px] font-[400] text-[#5C5C5C]">{{$receta->receta_porciones}}</h4>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Comparte esta receta</h3>
-                <div class="flex gap-3">
-                    <i class="fa-brands fa-facebook-f  h-[23px] w-[23px]"></i>
-                    <i class="fa-brands fa-instagram  h-[23px] w-[23px]"></i>
-                </div> 
-            </div>
+        <div>
+            <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Tiempo de cocción</h3>
+            <h4 class="nunitosans text-[18px] font-[400] text-[#5C5C5C]">{{$receta->receta_coccion}}</h4>
+        </div>
+        <div>
+            <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Porciones</h3>
+            <h4 class="nunitosans text-[18px] font-[400] text-[#5C5C5C]">{{$receta->receta_porciones}}</h4>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Comparte esta receta</h3>
+            <div class="flex gap-3">
+                <i class="fa-brands fa-facebook-f  h-[23px] w-[23px]"></i>
+                <i class="fa-brands fa-instagram  h-[23px] w-[23px]"></i>
+            </div> 
         </div>
     </div>
+</div>
+<div class="h-full max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%]">
     <!-- Pasos  -->
-    <div class="flex flex-col md:flex-row py-[5%] pl-[5%]">
+    <div class="flex flex-col md:flex-row mb-[70px] gap-6">
         <div class="w-full md:w-1/2">
             <h1 class="nunitosans text-[28px] font-[700] text-[#030303] mb-5">Ingredientes</h1>
             @foreach($receta->ingredientes as $ingrediente)
@@ -76,7 +76,7 @@
         </div>
     </div>
     <!-- Otras  -->
-    <div class="flex flex-col pl-[5%] gap-5">
+    <div class="flex flex-col gap-5 mb-16">
         <h1 class="nunitosans text-[28px] font-[700] text-[#030303]">Otras recetas</h1>
         <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($otrasRecetas as $receta)

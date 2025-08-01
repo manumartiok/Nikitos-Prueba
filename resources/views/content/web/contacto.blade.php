@@ -15,4 +15,9 @@
         <h1>{{$banners->contacto_titulo}}</h1>
     </div>
 </div>
+<!-- Contacto  -->
+
+<div class="h-full max-w-[1258px] mx-auto py-16 px-[5%] lg:px-[0%]">
+
+</div>
 @endsection

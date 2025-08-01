@@ -6,7 +6,7 @@
 
 @extends('layouts.web-layout')
 
-@section('title', 'Nosotros')
+@section('title', 'Recetas')
 
 @section('content')
 <!-- banner  -->
@@ -17,7 +17,7 @@
     </div>
 </div>
 <!-- Recetas  -->
-<div class="h-full w-full px-[5%] py-[5%]">
+<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($recetas as $receta)
     <div class="group h-[422px] sm:w-[403px] flex flex-col border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden p-4">

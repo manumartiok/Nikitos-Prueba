@@ -6,7 +6,7 @@
 
 @extends('layouts.web-layout')
 
-@section('title', 'Nosotros')
+@section('title', 'Productos')
 
 @section('content')
 <!-- banner  -->
@@ -17,7 +17,7 @@
     </div>
 </div>
 <!-- Productos  -->
-<div class="flex flex-col py-[5%] px-[5%] gap-6">
+<div class="flex flex-col h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]  gap-6">
     <div class="w-full flex justify-end ">  
         <button class="nunitosans h-[42px] w-[243px] rounded-[20px] border border-[#FFA221] text-[#FFA221] text-[16px] font-[600]">Descargar catálogo</button>
     </div>
@@ -47,7 +47,7 @@
                     <h1 class="text-black nunitosans font-[700] text-[21px]">{{ $producto->producto_nombre }}</h1>
 
                     <!-- Enlace con línea animada -->
-                    <a href="" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+                    <a href="{{ route('producto.detalle', $producto->id) }}" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
                         Ver producto
                         <span class="block h-[2px] w-0 group-hover:w-2/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
                     </a>

@@ -15,4 +15,9 @@
         <h1>{{$banners->ubicacion_titulo}}</h1>
     </div>
 </div>
+
+<!-- ubicacion  -->
+ <div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
+
+ </div>
 @endsection

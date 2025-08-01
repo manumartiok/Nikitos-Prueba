@@ -29,10 +29,10 @@
         <source src="{{ $casa->video }}" type="video/mp4">
         Tu navegador no soporta video HTML5.
     </video>
-    <div class="absolute inset-0 z-10 flex flex-col justify-center  text-white">
-        <h1 class="text-4xl nunito font-[600] text-[85px]">{!!$casa->video_tmayor!!}</h1>
-        <div class="text-lg nunito font-[600] text-[24px]">
-          <p >{!!$casa->video_tmenor!!}</p>
+    <div class="absolute inset-0 z-10 flex flex-col justify-center text-[#FFFFFF] gap-8 ">
+        <h1 class=" nunito font-[600] text-[85px]">{!!$casa->video_tmayor!!}</h1>
+        <div class=" nunito font-[600] text-[24px]">
+          <h2>{!!$casa->video_tmenor!!}</h2>
         </div>
         <div class="mt-4 flex gap-4">
             <button class="bg-white rounded-[20px] h-[42px] w-[214px] text-black px-4 py-2 rounded nunitosans font-[600] text-[16px] hover:scale-105 transition-transform duration-300">
@@ -46,10 +46,10 @@
 </div>
 
 <!-- Nosotros -->
-<div class="h-[695.63px] w-full relative">
-    <img src="{{ $casa->banner_foto }}" alt="" class="absolute w-full h-full object-cover">
-    <div class="absolute">
-        <h1 class="nunitosans font-[700] text-[45px]">{!!$casa->banner_tmayor!!}</h1>
+<div class="h-[695.63px] w-full relative ">
+    <img src="{{ $casa->banner_foto }}" alt="" class="absolute w-full h-full object-cover ">
+    <div class="absolute max-w-[1218px] mx-auto">
+        <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>
         <div class="">
             <h2 class="nunitosans font-[400] text-[20px] leading-relaxed">{!!$casa->banner_tmenor!!}</h2>
         </div>
@@ -58,7 +58,7 @@
 </div>
 
 <!-- Categorías -->
-<div class="max-w-[1218px] mx-auto">
+<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo1 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($categorias->take(4) as $categoria)
@@ -86,7 +86,7 @@
 </div>
 
 <!-- Destacados -->
-<div class="max-w-[1218px] mx-auto">
+<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo2 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($agrupados as $producto)
@@ -106,7 +106,7 @@
 </div>
 
 <!-- Recetas -->
-<div class="max-w-[1218px] mx-auto">
+<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo3 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($recetas->take(3) as $receta)

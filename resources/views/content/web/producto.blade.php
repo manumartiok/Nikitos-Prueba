@@ -6,7 +6,7 @@
 
 @extends('layouts.web-layout')
 
-@section('title', 'Nosotros')
+@section('title', 'Producto')
 
 @section('content')
 <!-- banner  -->
@@ -18,7 +18,7 @@
 </div>
 
 <!-- Productos  -->
-<div class="h-full w-full py-[5%] px-[5%]">
+<div class="h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]">
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($categorias as $categoria)
             <div class="relative group h-[321px] sm:w-[297px] flex flex-col items-center text-center justify-center rounded-[8px] overflow-hidden">
