@@ -25,7 +25,7 @@
 @section('content')
 <!-- Video -->
 <div class="relative h-[768.25px] w-full ">
-    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+    <video autoplay muted loop playsinline class=" top-0 left-0 w-full h-full object-cover">
         <source src="{{ $casa->video }}" type="video/mp4">
         Tu navegador no soporta video HTML5.
     </video>
@@ -46,7 +46,7 @@
 </div>
 
 <!-- Nosotros -->
-<div class="h-[830px] w-full relative ">
+<div class="h-[830px] w-full relative mt-[-200px] md:mt-[-250px]">
     <img src="{{ $casa->banner_foto }}" alt="" class="absolute w-full h-full object-center ">
     <div class="absolute inset-0 flex flex-col justify-center text-[#FFFFFF] max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] gap-10">
         <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>

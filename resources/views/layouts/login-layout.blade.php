@@ -53,7 +53,7 @@
 
     <!-- navbar -->
         <nav class="fixed top-0 left-0 w-full z-50">
-        <div id="navbar" class="nav-layout bg-[#FFFFFF] shadow-md  flex items-center justify-between mx-auto px-5 max-w-[1258px] h-[100px]">
+        <div id="navbar" class="nav-layout bg-[#FFFFFF] shadow-md flex items-center justify-between mx-auto px-5 max-w-[1258px] h-[100px]">
             
             <!-- Logo -->
             <img src="{{$layout->logo_url}}" alt="Logo" class="h-[67px] w-[138px] flex-shrink-0">
@@ -68,12 +68,9 @@
             
             <!-- Menú centrado -->
             <div class="flex-1 flex justify-center gap-6">
-                <a href="{{ route('home') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('home') ? 'font-bold' : '' }}">Home</a>
-                <a href="{{ route('productos') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('productos*') ? 'font-bold' : '' }}">Productos</a>
-                <a href="{{ route('ubicacion') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('donde-comprar') ? 'font-bold' : '' }}">Donde comprar</a>
-                <a href="{{ route('recetas') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('recetas*') ? 'font-bold' : '' }}">Recetas</a>
-                <a href="{{ route('nosotros') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('nosotros') ? 'font-bold' : '' }}">Nosotros</a>
-                <a href="{{ route('contacto') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('contacto') ? 'font-bold' : '' }}">Contacto</a>
+                <a href="{{ route('pedido') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('pedido') ? 'font-bold' : '' }}">Productos</a>
+                <a href="{{ route('historico') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('historico') ? 'font-bold' : '' }}">Histórico del pedido</a>
+                <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
             </div>
 
             <!-- Botón Ingresar a la derecha -->
@@ -113,12 +110,9 @@
 
         <!-- Menú mobile -->
         <div id="mobile-menu" class="lg:hidden hidden flex flex-col items-center gap-4 bg-white py-3">
-            <a href="{{ route('home') }}" class="nunitosans font-[400] text-[16px] ">Home</a>
-            <a href="{{ route('productos') }}" class="nunitosans font-[400] text-[16px] ">Productos</a>
-            <a href="{{ route('ubicacion') }}" class="nunitosans font-[400] text-[16px] ">Donde comprar</a>
-            <a href="{{ route('recetas') }}" class="nunitosans font-[400] text-[16px] ">Recetas</a>
-            <a href="{{ route('nosotros') }}" class="nunitosans font-[400] text-[16px] ">Nosotros</a>
-            <a href="{{ route('contacto') }}" class="nunitosans font-[400] text-[16px] ">Contacto</a>
+            <a href="{{ route('pedido') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('pedido') ? 'font-bold' : '' }}">Productos</a>
+            <a href="{{ route('historico') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('historico') ? 'font-bold' : '' }}">Histórico del pedido</a>
+            <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
             <div class="relative">
                 <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 flex justify-center gap-2  " style="background-color:#FFA221;">
                 <p class="nunitosans font-[600] text-[16px]">Ingresar</p>

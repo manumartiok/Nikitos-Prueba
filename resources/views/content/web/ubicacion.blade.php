@@ -5,7 +5,7 @@
 
 @extends('layouts.web-layout')
 
-@section('title', 'Nosotros')
+@section('title', 'Donde encontrarnos')
 
 @section('content')
 <!-- banner  -->

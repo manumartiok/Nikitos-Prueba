@@ -144,3 +144,18 @@ Route::get('/nosotros', function () {
 Route::get('/contacto', function () {
     return view('content.web.contacto');
 })->name('contacto');
+
+Route::get('/historico', function () {
+    return view('content.web.historico');
+})->name('historico');
+
+Route::get('/pedido', function () {
+    $producto=Producto::with('categoria')->findOrFail($id);
+    return view('content.web.pedido', ('compact'));
+})->name('pedido');
+
+Route::get('/lista-precios', function () {
+    return view('content.web.lista-precios');
+})->name('lista');
+
+
