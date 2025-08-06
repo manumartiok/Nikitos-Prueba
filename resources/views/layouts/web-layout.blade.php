@@ -88,10 +88,10 @@
                 <div class="loginModal fixed hidden flex  justify-center mx-auto mt-[30px]">
                     <div class="fixed inset-0 bg-black bg-opacity-50"></div>
                     <div class="fixed bg-[#FFFFFF] p-6 rounded-[12px]  h-[365px] w-[391px] mr-[5%]">
-                        <form class="h-full flex flex-col justify-between py-6 gap-4">
+                        <form class="loginForm h-full flex flex-col justify-between py-6 gap-4" method="POST" action="{{ route('inicia-sesion') }}">
                             <div class="flex flex-col gap-2">
                                 <label for="username" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Usuario</label>
-                                <input type="text" id="username" name="username" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" value="marianor" placeholder="Usuario">
+                                <input type="text" id="username" name="username" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="password" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Contraseña</label>
@@ -100,10 +100,58 @@
                             <div class="mt-[-16px]">
                                 <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">¿Olvidaste la contraseña?</a>
                             </div>
+                            <div class="mt-[-16px]">
+                                <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">Registrarse</a>
+                            </div>
                             <span class="border w-full color-[#DCDCDC]"></span>
 
                             <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Iniciar Sesión</button>
                         </form>
+
+                         <!-- Olvidar contraseña -->
+                        <div class="forgotPasswordForm hidden h-full flex flex-col gap-10 mt-6">
+                            <h2 class=" nunitosans text-[20px] text-[#030303] text-font-[700]">Recuperar Contraseña</h2>
+                            <form method="POST" action=" " class="h-full flex flex-col gap-6">
+                                @csrf
+                                <div class="flex flex-col gap-2">
+                                    <label class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
+                                    <input type="email" name="email" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Tu correo electrónico" required />
+                                </div>
+                                <div class="">
+                                    <button class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="sendRecoveryBtn">Enviar</button>
+                                </div>
+                                <div class="">
+                                    <a href="#" id="backToLoginFromForgot" class="nunitosans text-[14px] text-[#5C5C5C] text-font-[400]">Iniciar sesión</a>
+                                </div>
+                            </form>
+                        </div>
+
+
+                          <!-- Crear cuenta -->
+                        <div class="createAccountForm hidden h-full flex flex-col gap-4">
+                            <h2 class=" nunitosans text-[20px] text-[#030303] text-font-[700]" >Crear Cuenta</h2>
+                            <form method="POST" action="{{route('validar-registro')}}" class="h-full flex flex-col gap-2">
+                                @csrf
+                                <div class="flex flex-col gap-2">
+                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="username">Usuario</label>
+                                    <input type="text" name="name" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Usuario" required />
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
+                                    <input type="email" name="email" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Correo electrónico" required />
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="password">Contraseña</label>
+                                    <input type="password" name="password" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña" required />
+                                </div>
+                                <div class="">
+                                    <button class="w-full h-[35px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="createAccountSubmit">Registrarse</button>
+                                </div>
+                                <div class="">
+                                    <a href="#" id="backToLoginFromCreate" class="nunitosans text-[14px] text-[#5C5C5C] text-font-[400]">Iniciar sesión</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -127,10 +175,10 @@
 
                 <div class="loginModal fixed inset-x-0 hidden flex items-center justify-center">
                     <div class="bg-[#FFFFFF] h-[365px]  w-full p-6 rounded-[12px] ">
-                        <form class="h-full  flex flex-col justify-between py-6 gap-4">
+                        <form class="loginForm h-full  flex flex-col justify-between py-6 gap-4">
                             <div class="flex flex-col gap-2">
                                 <label for="username" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Usuario</label>
-                                <input type="text" id="username" name="username" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" value="marianor" placeholder="Usuario">
+                                <input type="text" id="username" name="username" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="password" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Contraseña</label>
@@ -139,11 +187,61 @@
                             <div class="mt-[-16px]">
                                 <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">¿Olvidaste la contraseña?</a>
                             </div>
+                            <div class="mt-[-16px]">
+                                <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">Registrarse</a>
+                            </div>
                             <span class="border w-full color-[#DCDCDC]"></span>
 
                             <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Iniciar Sesión</button>
                         </form>
+                    <!-- Olvidar contraseña -->
+                        <div class="forgotPasswordForm hidden h-full flex flex-col gap-10 mt-6">
+                            <h2 class=" nunitosans text-[20px] text-[#030303] text-font-[700]">Recuperar Contraseña</h2>
+                            <form method="POST" action=" " class="h-full flex flex-col gap-6">
+                                @csrf
+                                <div class="flex flex-col gap-2">
+                                    <label class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
+                                    <input type="email" name="email" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Tu correo electrónico" required />
+                                </div>
+                                <div class="">
+                                    <button class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="sendRecoveryBtn">Enviar</button>
+                                </div>
+                                <div class="">
+                                    <a href="#" id="backToLoginFromForgot" class="nunitosans text-[14px] text-[#5C5C5C] text-font-[400]">Iniciar sesión</a>
+                                </div>
+                            </form>
+                        </div>
+
+
+                          <!-- Crear cuenta -->
+                        <div class="createAccountForm hidden h-full flex flex-col gap-4">
+                            <h2 class=" nunitosans text-[20px] text-[#030303] text-font-[700]" >Crear Cuenta</h2>
+                            <form method="POST" action="{{route('validar-registro')}}" class="h-full flex flex-col gap-2">
+                                @csrf
+                                <div class="flex flex-col gap-2">
+                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="username">Usuario</label>
+                                    <input type="text" name="name" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Usuario" required />
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
+                                    <input type="email" name="email" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Correo electrónico" required />
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="password">Contraseña</label>
+                                    <input type="password" name="password" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña" required />
+                                </div>
+                                <div class="">
+                                    <button class="w-full h-[35px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="createAccountSubmit">Registrarse</button>
+                                </div>
+                                <div class="">
+                                    <a href="#" id="backToLoginFromCreate" class="nunitosans text-[14px] text-[#5C5C5C] text-font-[400]">Iniciar sesión</a>
+                                </div>
+                            </form>
+                        </div>    
+
                     </div>
+
+                                 
                 </div>
             </div>
         </div>
@@ -253,7 +351,8 @@
       });
     });
 
-document.addEventListener("DOMContentLoaded", function() { // este renglon espera a que se cargue todo el html antes de ejecutar el codigo
+document.addEventListener("DOMContentLoaded", function () {
+    // --- Menú mobile ---
     const toggleBtn = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const navbar = document.querySelector('.nav-layout'); // Usamos class en vez de ID
@@ -269,24 +368,54 @@ document.addEventListener("DOMContentLoaded", function() { // este renglon esper
         }
     });
 
-        // Manejo de los botones "Ingresar" y sus modales
-        const loginButtons = document.querySelectorAll('.btn-layout');
-        loginButtons.forEach(button => {
-        const loginModal = button.nextElementSibling; // Selecciona el modal siguiente al botón
+    // --- Manejo de los botones "Ingresar" y sus modales ---
+    const loginButtons = document.querySelectorAll('.btn-layout');
+    loginButtons.forEach(button => {
+        const loginModal = button.nextElementSibling; // Modal justo después del botón
         const overlay = loginModal.querySelector('.bg-black.bg-opacity-50');
 
         if (loginModal && loginModal.classList.contains('loginModal')) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault(); // Evita comportamiento por defecto del formulario
+            button.addEventListener('click', function (e) {
+                e.preventDefault(); // Evita comportamiento por defecto del botón
                 loginModal.classList.toggle('hidden');
             });
 
-            // Cerrar el modal al hacer clic fuera de él
-        if (overlay) {
-            overlay.addEventListener('click', function() {
-                loginModal.classList.add('hidden');
+            // Cerrar el modal al hacer clic en el fondo oscuro
+            if (overlay) {
+                overlay.addEventListener('click', function () {
+                    loginModal.classList.add('hidden');
+                });
+            }
+
+            // --- Alternar entre formularios dentro del modal ---
+            const loginForm = loginModal.querySelector('.loginForm');
+            const forgotPasswordForm = loginModal.querySelector('.forgotPasswordForm');
+            const createAccountForm = loginModal.querySelector('.createAccountForm');
+
+            const links = loginModal.querySelectorAll('a');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const text = e.target.textContent.trim();
+
+                    if (text === "¿Olvidaste la contraseña?") {
+                        e.preventDefault();
+                        loginForm.classList.add('hidden');
+                        forgotPasswordForm.classList.remove('hidden');
+                        createAccountForm.classList.add('hidden');
+                    } else if (text === "Registrarse") {
+                        e.preventDefault();
+                        loginForm.classList.add('hidden');
+                        createAccountForm.classList.remove('hidden');
+                        forgotPasswordForm.classList.add('hidden');
+                    } else if (text === "Iniciar sesión") {
+                        e.preventDefault();
+                        loginForm.classList.remove('hidden');
+                        forgotPasswordForm.classList.add('hidden');
+                        createAccountForm.classList.add('hidden');
+                    }
+                });
             });
-        }
         }
     });
 });

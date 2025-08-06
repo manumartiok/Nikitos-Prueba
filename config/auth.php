@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'nikitos_user' => [ // nombre arbitrario para el guard
+            'driver' => 'session',
+            'provider' => 'nikitos_users', //este debe coincidir con el provider abajo
+        ],
     ],
 
     /*
@@ -65,10 +70,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'nikitos_users' => [ // nombre arbitrario para el provider
+            'driver' => 'eloquent',
+            'model' => App\Models\NikitoUser::class,
+        ],
     ],
 
     /*
@@ -89,6 +94,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'nikitos_users' => [
+            'provider' => 'nikitos_users', // aquí también debe coincidir el nombre del provider
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

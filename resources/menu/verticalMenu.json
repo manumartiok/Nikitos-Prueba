@@ -98,8 +98,14 @@
         }
 
       ]
-    }
+    },
 
+    {
+      "url": "/lista/show/{{ $listas ? $listas->id : 1 }}",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Lista",
+      "slug": "pages-listaprecio-show"
+    }
     
 
   ]

@@ -5,17 +5,11 @@
     $recetas = App\Models\Receta::all();
     $productos = App\Models\Producto::with('categoria')->where('active', 1)->get();
 
-    $agrupados = collect();
-    $usadas = [];
-
-    foreach ($productos->sortBy('categoria_productos_id') as $producto) {
-        if (!in_array($producto->categoria_productos_id, $usadas)) {
-            $agrupados->push($producto);
-            $usadas[] = $producto->categoria_productos_id;
-        }
-
-        if ($agrupados->count() >= 4) break;
-    }
+    $agrupados = App\Models\Producto::with('categoria')
+        ->where('active', 1)
+        ->where('destacado', 1) 
+        ->take(4) 
+        ->get();
 @endphp
 
 @extends('layouts.web-layout')

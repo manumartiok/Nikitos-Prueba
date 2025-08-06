@@ -136,4 +136,11 @@ class ProductoController extends Controller
         $productos->save();
         return redirect()->route('pages-producto');
       }
+
+    public function destacado($productos_id){
+        $productos=Producto::find($productos_id);
+        $productos->destacado= !$productos->destacado;
+        $productos->save();
+        return redirect()->route('pages-producto');
+      }
 }

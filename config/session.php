@@ -131,6 +131,11 @@ return [
         Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
     ),
 
+    'nikitos_cookie' => env(
+        'NIKITOS_SESSION_COOKIE',
+        Str::slug(env('APP_NAME', 'laravel'), '_').'nikitos_session'
+    ),
+
     /*
     |--------------------------------------------------------------------------
     | Session Cookie Path

@@ -6,6 +6,7 @@ use App\Models\CategoriaProducto;
 use App\Models\Producto;
 use App\Models\Ingrediente;
 use App\Models\Preparacion;
+use App\Http\Controllers\NikitoUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,7 @@ $controller_path = 'App\Http\Controllers';
     Route::post('/producto/update', $controller_path . '\ProductoController@update')->name('pages-producto-update');
     Route::get('/producto/destroy/{producto_id}', $controller_path . '\ProductoController@destroy')->name('pages-producto-destroy');
     Route::get('/producto/switch/{producto_id}', $controller_path . '\ProductoController@switch')->name('pages-producto-switch');
+    Route::get('/producto/destacado/{producto_id}', $controller_path . '\ProductoController@destacado')->name('pages-producto-destacado');
 
     // Menu Recetas
     Route::get('/receta', $controller_path . '\RecetaController@index')->name('pages-receta'); 
@@ -99,6 +101,10 @@ $controller_path = 'App\Http\Controllers';
     Route::post('/preparacion/update', $controller_path . '\PreparacionController@update')->name('pages-preparacion-update');
     Route::get('/preparacion/destroy/{ingrediente_id}', $controller_path . '\PreparacionController@destroy')->name('pages-preparacion-destroy');
     Route::get('/preparacion/switch/{ingrediente_id}', $controller_path . '\PreparacionController@switch')->name('pages-preparacion-switch');
+
+    // Menu Lista
+    Route::get('/lista/show/{lista_id}', $controller_path . '\PdfController@show')->name('pages-listaprecio-show');
+    Route::post('/lista/update', $controller_path . '\PdfController@update')->name('pages-listaprecio-update');
     
 });
 
@@ -150,12 +156,22 @@ Route::get('/historico', function () {
 })->name('historico');
 
 Route::get('/pedido', function () {
-    $producto=Producto::with('categoria')->findOrFail($id);
-    return view('content.web.pedido', ('compact'));
+    $producto=Producto::with('categoria')->get();
+    return view('content.web.pedido',compact ('producto'));
 })->name('pedido');
 
 Route::get('/lista-precios', function () {
     return view('content.web.lista-precios');
 })->name('lista');
+
+// Inicio de sesion 
+
+Route::post('/validar-registro',[NikitoUserController::class,'register'])->name('validar-registro');
+Route::post('/inicia-sesion',[NikitoUserController::class,'login'])->name('inicia-sesion');
+
+Route::post('/logout',[NikitoUserController::class,'logout'])->name('logout');
+Route::post('/delete/{user_id}',[NikitoUserController::class,'destroy'])->name('delete');
+
+
 
 
