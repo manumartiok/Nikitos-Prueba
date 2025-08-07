@@ -68,7 +68,7 @@
                     <h1 class="text-white nunitosans font-[700] text-[25px]">{{ $categoria->nombre_categoria }}</h1>
 
                     <!-- Enlace con subrayado animado -->
-                    <a href="#" class="nunitosans font-[600] text-[16px] text-white mt-2 relative group-hover:text-white transition">
+                    <a href="{{ route('producto.categoria', $categoria->id) }}" class="nunitosans font-[600] text-[16px] text-white mt-2 relative group-hover:text-white transition">
                         Ver todos
                         <span class="block h-[2px] w-0 group-hover:w-3/5 transition-all duration-300 bg-white mx-auto mt-1"></span>
                     </a>
@@ -77,7 +77,7 @@
         @endforeach
     </div>
     <div class="w-full flex justify-center">
-        <a href="" class="nunitosans font-[600] text-[16px] block mt-4  h-[42px] w-[192px] rounded-[20px] border border-[#030303] flex items-center justify-center hover:scale-105 transition-transform duration-300">Ver todas</a>
+        <a href="{{ route('productos') }}" class="nunitosans font-[600] text-[16px] block mt-4  h-[42px] w-[192px] rounded-[20px] border border-[#030303] flex items-center justify-center hover:scale-105 transition-transform duration-300">Ver todas</a>
     </div>
 </div>
 
@@ -94,7 +94,7 @@
                 <h1 class="text-black nunitosans font-[700] text-[21px]">{{ $producto->producto_nombre }}</h1>
 
                 <!-- Enlace con línea animada -->
-                <a href="" class="nunitosans font-[600] text-[16px]  relative group-hover:text-black transition">
+                <a href="{{ route('producto.detalle', $producto->id) }}" class="nunitosans font-[600] text-[16px]  relative group-hover:text-black transition">
                     Ver producto
                     <span class="block h-[2px] w-0 group-hover:w-2/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
                 </a>
@@ -117,7 +117,7 @@
         <div class="flex-1 flex flex-col items-center justify-center text-center px-4 py-3 gap-6">
             <h1 class="nunitosans font-[700] text-[24px]">{{ $receta->receta_nombre }}</h1>
 
-            <a href="" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+            <a href="{{ route('receta.detalle', $receta->id) }}" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
                 Ver receta
                 <span class="block h-[2px] w-0 group-hover:w-3/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
             </a>

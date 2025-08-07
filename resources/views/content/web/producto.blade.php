@@ -33,7 +33,7 @@
                     <h1 class="text-white nunitosans font-[700] text-[25px]">{{ $categoria->nombre_categoria }}</h1>
 
                     <!-- Enlace con subrayado animado -->
-                    <a href="#" class="nunitosans font-[600] text-[16px] text-white mt-2 relative group-hover:text-white transition">
+                    <a href="{{ route('producto.categoria', $categoria->id) }}" class="nunitosans font-[600] text-[16px] text-white mt-2 relative group-hover:text-white transition">
                         Ver todos
                         <span class="block h-[2px] w-0 group-hover:w-3/5 transition-all duration-300 bg-white mx-auto mt-1"></span>
                     </a>
