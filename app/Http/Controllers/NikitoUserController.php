@@ -50,7 +50,7 @@ class NikitoUserController extends Controller
     }
  
 
-   public function logout(Request $request){
+   public function salir(Request $request){
         
      // Cerrar sesión con el guard 'nikitos_user'
      Auth::guard('nikitos_user')->logout();

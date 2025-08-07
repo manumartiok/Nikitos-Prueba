@@ -43,8 +43,7 @@
 }
      </style>
 </head>
-<body class="bg-white h-full">
-    <div class="min-h-screen flex flex-col">
+<body class="bg-white">
 
     <!-- navbar -->
         <nav class="fixed top-0 left-0 w-full z-50">
@@ -68,6 +67,128 @@
                 <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
             </div>
 
+@auth('nikitos_user')
+    <div class="relative">
+        <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 gap-2" style="background-color:#FFA221;">
+            <p class="nunitosans font-[600] text-[16px]">{{ Auth::guard('nikitos_user')->user()->name }}</p>
+        </button>
+
+        <!-- Modal para el Formulario de Inicio de Sesión -->
+        <div class="loginModal fixed hidden flex justify-center mx-auto mt-[30px]">
+            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+            <div class="fixed bg-[#FFFFFF] p-6 rounded-[12px] h-[365px] w-[391px] mr-[5%]">
+                <div class="h-full w-full flex flex-col justify-around gap-6">
+                    <div>
+                        <h2>Correo electrónico: {{ Auth::guard('nikitos_user')->user()->email }}</h2>
+                    </div>
+                    <div>
+                        <form action="{{ route('salir') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Cerrar sesión</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="{{ route('delete', Auth::guard('nikitos_user')->user()->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Borrar cuenta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endauth
+
+@guest('nikitos_user')
+    <div class="relative">
+        <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 gap-2" style="background-color:#FFA221;">
+            <p class="nunitosans font-[600] text-[16px]">Ingresar</p>
+            <i class="fa-solid fa-lock text-white"></i>
+        </button>
+
+        <!-- Modal para el Formulario de Inicio de Sesión -->
+        <div class="loginModal fixed hidden flex justify-center mx-auto mt-[30px]">
+            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+            <div class="fixed bg-[#FFFFFF] p-6 rounded-[12px] h-[365px] w-[391px] mr-[5%]">
+                <!-- Login Form -->
+                <form class="loginForm h-full flex flex-col justify-between py-6 gap-4" method="POST" action="{{ route('inicia-sesion') }}">
+                    @csrf
+                    <div class="flex flex-col gap-2">
+                        <label for="name" class="block nunitosans text-[16px] text-[#5C5C5C] font-[400]">Usuario</label>
+                        <input type="text" id="name" name="name" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="password" class="block nunitosans text-[16px] text-[#5C5C5C] font-[400]">Contraseña</label>
+                        <input type="password" id="password" name="password" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña">
+                    </div>
+                    <div class="mt-[-16px]">
+                        <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] font-[400]">¿Olvidaste la contraseña?</a>
+                    </div>
+                    <div class="mt-[-16px]">
+                        <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] font-[400]">Registrarse</a>
+                    </div>
+                    <span class="border w-full color-[#DCDCDC]"></span>
+                    <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Iniciar Sesión</button>
+                </form>
+
+                <!-- Olvidar contraseña -->
+                <div class="forgotPasswordForm hidden h-full flex flex-col gap-10 mt-6">
+                    <h2 class="nunitosans text-[20px] text-[#030303] font-[700]">Recuperar Contraseña</h2>
+                    <form method="POST" action="" class="h-full flex flex-col gap-6">
+                        @csrf
+                        <div class="flex flex-col gap-2">
+                            <label class="block nunitosans text-[16px] text-[#5C5C5C] font-[400]" for="email">Correo electrónico</label>
+                            <input type="email" name="email" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Tu correo electrónico" required />
+                        </div>
+                        <div>
+                            <button class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="sendRecoveryBtn">Enviar</button>
+                        </div>
+                        <div>
+                            <a href="#" id="backToLoginFromForgot" class="nunitosans text-[14px] text-[#5C5C5C] font-[400]">Iniciar sesión</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Crear cuenta -->
+                <div class="createAccountForm hidden h-full flex flex-col gap-4">
+                    <h2 class="nunitosans text-[20px] text-[#030303] font-[700]">Crear Cuenta</h2>
+                    <form method="POST" action="{{ route('validar-registro') }}" class="h-full flex flex-col gap-2">
+                        @csrf
+                        <div class="flex flex-col gap-2">
+                            <label class="form-label nunitosans text-[16px] text-[#5C5C5C] font-[400]" for="username">Usuario</label>
+                            <input type="text" name="name" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Usuario" required />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="form-label nunitosans text-[16px] text-[#5C5C5C] font-[400]" for="email">Correo electrónico</label>
+                            <input type="email" name="email" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Correo electrónico" required />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="form-label nunitosans text-[16px] text-[#5C5C5C] font-[400]" for="password">Contraseña</label>
+                            <input type="password" name="password" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña" required />
+                        </div>
+                        <div>
+                            <button class="w-full h-[35px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="createAccountSubmit">Registrarse</button>
+                        </div>
+                        <div>
+                            <a href="#" id="backToLoginFromCreate" class="nunitosans text-[14px] text-[#5C5C5C] font-[400]">Iniciar sesión</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endguest
+            </div>
+
+            </div>
+        
+
+        <!-- Menú mobile -->
+        <div id="mobile-menu" class="lg:hidden hidden flex flex-col items-center gap-4 bg-white py-3">
+            <a href="{{ route('pedido') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('pedido') ? 'font-bold' : '' }}">Productos</a>
+            <a href="{{ route('historico') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('historico') ? 'font-bold' : '' }}">Histórico del pedido</a>
+            <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
+
             @auth('nikitos_user')
             <div class="relative">
                 <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 flex justify-center gap-2  " style="background-color:#FFA221;">
@@ -76,15 +197,14 @@
                 
                 <!-- Modal para el Formulario de Inicio de Sesión -->
                 
-               <div class="loginModal fixed hidden flex  justify-center mx-auto mt-[30px]">
-                    <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-                    <div class="fixed bg-[#FFFFFF] p-6 rounded-[12px]  h-[365px] w-[391px] mr-[5%]">
-                        <div class="h-full w-full flex flex-col gap-6">
+               <div class="loginModal fixed inset-x-0 hidden flex items-center justify-center">
+                    <div class="bg-[#FFFFFF] h-[365px]  w-full p-6 rounded-[12px] ">
+                        <div class="h-full w-full flex flex-col justify-around gap-6">
                             <div>
                                 <h2>Correo electrónico: {{ Auth::guard('nikitos_user')->user()->email }}</h2>
                             </div>
                             <div>
-                                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                <form action="{{ route('salir') }}" method="POST" style="display: inline;">
                                     @csrf
                                     <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Cerrar sesión</button>
                                 </form>
@@ -101,8 +221,7 @@
                 </div>
             @endauth
 
-            <!-- Botón Ingresar a la derecha -->
-             @guest('nikitos_user')
+   @guest('nikitos_user')
             <div class="relative">
                 <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 flex justify-center gap-2  " style="background-color:#FFA221;">
                 <p class="nunitosans font-[600] text-[16px]">Ingresar</p>
@@ -111,17 +230,16 @@
                 
                 <!-- Modal para el Formulario de Inicio de Sesión -->
                 
-               <div class="loginModal fixed hidden flex  justify-center mx-auto mt-[30px]">
-                    <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-                    <div class="fixed bg-[#FFFFFF] p-6 rounded-[12px]  h-[365px] w-[391px] mr-[5%]">
-                        <form class="loginForm h-full flex flex-col justify-between py-6 gap-4" method="POST" action="{{ route('inicia-sesion') }}">
+               <div class="loginModal fixed inset-x-0 hidden flex items-center justify-center">
+                    <div class="bg-[#FFFFFF] h-[365px]  w-full p-6 rounded-[12px] ">
+                        <form class="loginForm h-full  flex flex-col justify-between py-6 gap-4" method="POST" action="{{ route('inicia-sesion') }}">
                             <div class="flex flex-col gap-2">
-                                <label for="username" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Usuario</label>
-                                <input type="text" id="username" name="username" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
+                                <label for="name" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Usuario</label>
+                                <input type="text" id="name" name="name" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="password" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Contraseña</label>
-                                <input type="password" id="password" name="password" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña">
+                                <input type="password" id="password" name="password" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña">
                             </div>
                             <div class="mt-[-16px]">
                                 <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">¿Olvidaste la contraseña?</a>
@@ -141,7 +259,7 @@
                                 @csrf
                                 <div class="flex flex-col gap-2">
                                     <label class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
-                                    <input type="email" name="email" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Tu correo electrónico" required />
+                                    <input type="email" name="email" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Tu correo electrónico" required />
                                 </div>
                                 <div class="">
                                     <button class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="sendRecoveryBtn">Enviar</button>
@@ -160,15 +278,15 @@
                                 @csrf
                                 <div class="flex flex-col gap-2">
                                     <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="username">Usuario</label>
-                                    <input type="text" name="name" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Usuario" required />
+                                    <input type="text" name="name" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Usuario" required />
                                 </div>
                                 <div class="flex flex-col gap-2">
                                     <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
-                                    <input type="email" name="email" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Correo electrónico" required />
+                                    <input type="email" name="email" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Correo electrónico" required />
                                 </div>
                                 <div class="flex flex-col gap-2">
                                     <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="password">Contraseña</label>
-                                    <input type="password" name="password" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña" required />
+                                    <input type="password" name="password" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña" required />
                                 </div>
                                 <div class="">
                                     <button class="w-full h-[35px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="createAccountSubmit">Registrarse</button>
@@ -179,93 +297,9 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            @endguest
+                </div>  
+                @endguest
             </div>
-            </div>
-        </div>
-
-        <!-- Menú mobile -->
-        <div id="mobile-menu" class="lg:hidden hidden flex flex-col items-center gap-4 bg-white py-3">
-            <a href="{{ route('pedido') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('pedido') ? 'font-bold' : '' }}">Productos</a>
-            <a href="{{ route('historico') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('historico') ? 'font-bold' : '' }}">Histórico del pedido</a>
-            <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
-            <div class="relative">
-                <button class="btn-layout rounded-[20px] h-[42px] w-[165px] flex items-center justify-center hover:scale-105 transition-transform duration-300 flex justify-center gap-2  " style="background-color:#FFA221;">
-                <p class="nunitosans font-[600] text-[16px]">Ingresar</p>
-                <i class="fa-solid fa-lock text-white "></i>
-                </button>   
-
-                 <div class="loginModal fixed inset-x-0 hidden flex items-center justify-center">
-                    <div class="bg-[#FFFFFF] h-[365px]  w-full p-6 rounded-[12px] ">
-                        <form class="loginForm h-full  flex flex-col justify-between py-6 gap-4">
-                            <div class="flex flex-col gap-2">
-                                <label for="username" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Usuario</label>
-                                <input type="text" id="username" name="username" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label for="password" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Contraseña</label>
-                                <input type="password" id="password" name="password" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña">
-                            </div>
-                            <div class="mt-[-16px]">
-                                <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">¿Olvidaste la contraseña?</a>
-                            </div>
-                            <div class="mt-[-16px]">
-                                <a href="#" class="nunitosans text-[12px] text-[#5C5C5C] text-font-[400] ">Registrarse</a>
-                            </div>
-                            <span class="border w-full color-[#DCDCDC]"></span>
-
-                            <button type="submit" class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]">Iniciar Sesión</button>
-                        </form>
-                    <!-- Olvidar contraseña -->
-                        <div class="forgotPasswordForm hidden h-full flex flex-col gap-10 mt-6">
-                            <h2 class=" nunitosans text-[20px] text-[#030303] text-font-[700]">Recuperar Contraseña</h2>
-                            <form method="POST" action=" " class="h-full flex flex-col gap-6">
-                                @csrf
-                                <div class="flex flex-col gap-2">
-                                    <label class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
-                                    <input type="email" name="email" class="h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Tu correo electrónico" required />
-                                </div>
-                                <div class="">
-                                    <button class="w-full h-[42px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="sendRecoveryBtn">Enviar</button>
-                                </div>
-                                <div class="">
-                                    <a href="#" id="backToLoginFromForgot" class="nunitosans text-[14px] text-[#5C5C5C] text-font-[400]">Iniciar sesión</a>
-                                </div>
-                            </form>
-                        </div>
-
-
-                          <!-- Crear cuenta -->
-                        <div class="createAccountForm hidden h-full flex flex-col gap-4">
-                            <h2 class=" nunitosans text-[20px] text-[#030303] text-font-[700]" >Crear Cuenta</h2>
-                            <form method="POST" action="{{route('validar-registro')}}" class="h-full flex flex-col gap-2">
-                                @csrf
-                                <div class="flex flex-col gap-2">
-                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="username">Usuario</label>
-                                    <input type="text" name="name" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Usuario" required />
-                                </div>
-                                <div class="flex flex-col gap-2">
-                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="email">Correo electrónico</label>
-                                    <input type="email" name="email" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Correo electrónico" required />
-                                </div>
-                                <div class="flex flex-col gap-2">
-                                    <label class="form-label nunitosans text-[16px] text-[#5C5C5C] text-font-[400]" for="password">Contraseña</label>
-                                    <input type="password" name="password" class="form-control h-[45px] p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosasns text-[12px] text-[#5C5C5C] font-[400]" placeholder="Contraseña" required />
-                                </div>
-                                <div class="">
-                                    <button class="w-full h-[35px] rounded-[20px] bg-[#FFA221] nunitosans text-[#FFFFFF] text-[16px] font-[600]" type="submit" id="createAccountSubmit">Registrarse</button>
-                                </div>
-                                <div class="">
-                                    <a href="#" id="backToLoginFromCreate" class="nunitosans text-[14px] text-[#5C5C5C] text-font-[400]">Iniciar sesión</a>
-                                </div>
-                            </form>
-                        </div>    
-
-                    </div>
-
-                                 
-                </div>
             </div>
         </div>
         </nav>
@@ -273,7 +307,7 @@
 
     <!-- Contenido -->
 
-    <div class="flex-grow">
+    <div>
         @yield('content')
     </div>
 

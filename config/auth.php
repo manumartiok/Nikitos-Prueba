@@ -44,6 +44,7 @@ return [
         'nikitos_user' => [ // nombre arbitrario para el guard
             'driver' => 'session',
             'provider' => 'nikitos_users', //este debe coincidir con el provider abajo
+            'cookie' => 'nikitos_user_session',
         ],
     ],
 

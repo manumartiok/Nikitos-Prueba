@@ -169,9 +169,8 @@ Route::get('/lista-precios', function () {
 Route::post('/validar-registro',[NikitoUserController::class,'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[NikitoUserController::class,'login'])->name('inicia-sesion');
 
-Route::post('/logout',[NikitoUserController::class,'logout'])->name('logout');
+Route::post('/salir',[NikitoUserController::class,'salir'])->name('salir');
 Route::post('/delete/{user_id}',[NikitoUserController::class,'destroy'])->name('delete');
-
 
 
 

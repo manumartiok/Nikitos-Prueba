@@ -7,7 +7,7 @@
 @section('title', 'Histórico')
 
 @section('content')
- <div class="h-full max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%]">
+ <div class="h-full max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] mb-[130px]">
     <table class="mt-[202px] w-full  rounded-t-[8px] overflow-hidden" >
         <thead class="w-full h-[52px] bg-[#F5F5F5] nunitosans h-[16px] text-[#030303] font-[600] border-b border-[#DCDCDC]">
             <tr>
