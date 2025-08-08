@@ -25,4 +25,9 @@ class NikitoUser extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function pedidos()
+    {
+    return $this->hasMany(Pedido::class, 'nikito_user_id');
+    }
 }

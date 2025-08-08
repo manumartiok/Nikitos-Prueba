@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\Ingrediente;
 use App\Models\Preparacion;
 use App\Http\Controllers\NikitoUserController;
+use App\Http\Controllers\HistoricoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,8 +106,16 @@ $controller_path = 'App\Http\Controllers';
     // Menu Lista
     Route::get('/lista/show/{lista_id}', $controller_path . '\PdfController@show')->name('pages-listaprecio-show');
     Route::post('/lista/update', $controller_path . '\PdfController@update')->name('pages-listaprecio-update');
-    
+
+    // Menu Pedidos
+    Route::get('/pedidos', $controller_path . '\PedidoController@index')->name('pages-pedidos'); 
+    Route::get('/pedidos/show/{pedido_id}', $controller_path . '\PedidoController@show')->name('pages-pedidos-show');
+    Route::post('/pedidos/update', $controller_path . '\PedidoController@update')->name('pages-pedidos-update');
+    Route::get('/pedidos/destroy/{pedido_id}', $controller_path . '\PedidoController@destroy')->name('pages-preparacion-destroy');
+    Route::get('/pedidos/switch/{pedido_id}', $controller_path . '\PedidoController@switch')->name('pages-pedidos-switch'); 
 });
+
+    Route::post('/pedidos/store', $controller_path . '\PedidoController@store')->name('pages-pedidos-store');
 
 
 Route::get('/home', function () {
@@ -151,18 +160,21 @@ Route::get('/contacto', function () {
     return view('content.web.contacto');
 })->name('contacto');
 
-Route::get('/historico', function () {
-    return view('content.web.historico');
-})->name('historico');
 
-Route::get('/pedido', function () {
-    $producto=Producto::with('categoria')->get();
-    return view('content.web.pedido',compact ('producto'));
-})->name('pedido');
+Route::middleware(['auth:nikitos_user'])->group(function () {
 
-Route::get('/lista-precios', function () {
-    return view('content.web.lista-precios');
-})->name('lista');
+     Route::get('/historico/{user_id}', [HistoricoController::class, 'index'])->name('historico');
+
+    Route::get('/pedido', function () {
+        $producto=Producto::with('categoria')->get();
+        return view('content.web.pedido',compact ('producto'));
+    })->name('pedido');
+
+    Route::get('/lista-precios', function () {
+        return view('content.web.lista-precios');
+    })->name('lista');
+
+});
 
 // Inicio de sesion 
 

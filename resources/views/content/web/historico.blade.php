@@ -1,5 +1,8 @@
-@php
+@php use Illuminate\Support\Facades\Auth; @endphp
 
+@php
+    $userId = Auth::guard('nikitos_user')->id();
+    $pedidos = App\Models\Pedido::where('nikito_user_id', $userId)->get();
 @endphp
 
 @extends('layouts.login-layout')
@@ -21,12 +24,15 @@
             </tr>
         </thead>
         <tbody class="w-full nunitosans h-[16px] text-[#5C5C5C] font-[400]">
+            @foreach($pedidos as $pedido)
             <tr class="h-[86px] border-b border-[#DCDCDC]">
-                <td class="text-center">icono</td>
-                <td class="text-center">id cliente</td>
-                <td class="text-center">razon</td>
-                <td class="text-left">numero pedido</td>
-                <td class="">fecha</td>
+                <td class="text-center">
+                    <img src="assets/img/file-text.svg" alt="">
+                </td>
+                <td class="text-center">{{$pedido->codigo_cliente}}</td>
+                <td class="text-center">{{$pedido->razon_social}}</td>
+                <td class="text-left">{{$pedido->id}}</td>
+                <td class="">{{$pedido->fecha_pedido}}</td>
                 <td class="text-left">
                     <button class="flex items-center justify-center h-[42px] w-[141px] text-[#FFA221] font-[600] border border-[#FFA221] rounded-[20px]">Ver detalle</button>
                 </td>
@@ -34,6 +40,7 @@
                     <button class="flex items-center justify-center h-[42px] w-[141px] text-[#FFFFFF] font-[600] bg-[#FFA221] rounded-[20px]">Repetir pedido</button>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
  </div>

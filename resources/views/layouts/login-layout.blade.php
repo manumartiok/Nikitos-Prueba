@@ -63,7 +63,10 @@
             <!-- Menú centrado -->
             <div class="flex-1 flex justify-center gap-6">
                 <a href="{{ route('pedido') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('pedido') ? 'font-bold' : '' }}">Productos</a>
-                <a href="{{ route('historico') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('historico') ? 'font-bold' : '' }}">Histórico del pedido</a>
+                <a href="{{ route('historico', ['user_id' => Auth::guard('nikitos_user')->user()->id]) }}" 
+                    class="nunitosans font-[400] text-[16px] {{ Request::is('historico/' . Auth::guard('nikitos_user')->user()->id) ? 'font-bold' : '' }}">
+                    Histórico del pedido
+                </a>
                 <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
             </div>
 
@@ -186,7 +189,10 @@
         <!-- Menú mobile -->
         <div id="mobile-menu" class="lg:hidden hidden flex flex-col items-center gap-4 bg-white py-3">
             <a href="{{ route('pedido') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('pedido') ? 'font-bold' : '' }}">Productos</a>
-            <a href="{{ route('historico') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('historico') ? 'font-bold' : '' }}">Histórico del pedido</a>
+            <a href="{{ route('historico', ['user_id' => Auth::guard('nikitos_user')->user()->id]) }}" 
+                class="nunitosans font-[400] text-[16px] {{ Request::is('historico/' . Auth::guard('nikitos_user')->user()->id) ? 'font-bold' : '' }}">
+                Histórico del pedido
+            </a>
             <a href="{{ route('lista') }}" class="nunitosans font-[400] text-[16px] {{ Request::is('lista-precios') ? 'font-bold' : '' }}">Lista de precios</a>
 
             @auth('nikitos_user')

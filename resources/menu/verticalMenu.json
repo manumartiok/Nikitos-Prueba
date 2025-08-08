@@ -105,6 +105,13 @@
       "icon": "menu-icon tf-icons bx bx-file",
       "name": "Lista",
       "slug": "pages-listaprecio-show"
+    },
+
+    {
+      "url": "/pedidos",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "name": "Pedidos",
+      "slug": "pages-pedidos"
     }
     
 

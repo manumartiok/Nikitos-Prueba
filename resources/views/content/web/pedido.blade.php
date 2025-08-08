@@ -17,48 +17,50 @@ $productos = App\Models\Producto::all();
         </h3>
     </div>
 
-    <form action="">
+    <form action="{{ route('pages-pedidos-store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <input type="hidden" name="nikito_user_id" value="{{ Auth::id() }}">
         <!-- Formulario de datos -->
         <div class="w-full flex flex-col md:flex-row gap-6">
             <div class="w-full md:w-1/2 flex flex-col md:flex-row gap-6">
                 <div class="w-full flex flex-col gap-6">
                     <div class="w-full flex flex-col nunitosans text-[#5C5C5C] font-[400px] gap-4">
                         <label for="fecha" class="text-[16px]">Fecha*</label>
-                        <input type="date" id="fecha" class="h-[45px] p-3 text-[14px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="date" id="fecha" name="fecha_pedido" class="h-[45px] p-3 text-[14px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="localidad" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Localidad*</label>
-                        <input type="text" id="localidad" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="localidad" name="localidad" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="horario" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Horario*</label>
-                        <input type="text" id="horario" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="horario" name="horario" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                 </div>
                 <div class="w-full flex flex-col gap-6">
                     <div class="w-full flex flex-col gap-4">
                         <label for="razon_social" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Razon social*</label>
-                        <input type="text" id="razon_social" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="razon_social" name="razon_social" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="codigo" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Código de cliente*</label>
-                        <input type="text" id="codigo" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="codigo" 	name="codigo_cliente" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="pago" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Condiciones de pago*</label>
-                        <input type="text" id="pago" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="pago" name="condiciones_pago" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                 </div>
             </div>
             <div class="w-full md:w-1/2 flex flex-col gap-6">
                 <div class="w-full flex flex-col gap-4">
                     <label for="observaciones" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Observaciones*</label>
-                    <textarea class="flex-grow-1 border border-[#DCDCDC] rounded-[8px] min-h-[146px]" rows="3" id="observaciones" required></textarea>
+                    <textarea class="flex-grow-1 border border-[#DCDCDC] rounded-[8px] min-h-[146px]" name="observaciones" rows="3" id="observaciones" required></textarea>
                 </div>
                 <div class="w-full flex flex-col gap-4 nunitosans text-[#5C5C5C] font-[400px]">
                     <label for="" class="text-[18px]">¿Queres subir un archivo?*</label>
                     <div class="relative w-full">
-                        <input type="file" id="fileInput" class="absolute inset-0 opacity-0 z-10 cursor-pointer" required>
+                        <input type="file" id="fileInput" name="archivo" class="absolute inset-0 opacity-0 z-10 cursor-pointer" required>
                         <div class="h-[45px] border border-[#EAEAEA] rounded-[12px] text-[14px] text-[#5C5C5C] font-[400] flex justify-between items-center px-4">
                             <span id="fileName" class="truncate">Seleccionar un archivo</span>
                             <i class="fa-solid fa-arrow-up-from-bracket text-[#FFA221]"></i>

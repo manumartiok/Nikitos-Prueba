@@ -24,30 +24,23 @@ class NikitoUserController extends Controller
         return redirect()->route('pedido');
    }
 
-   public function login(Request $request){
-
-
-     
-     $credentials = $request->validate([
-        'name' => 'required|string',  
+  public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'name' => 'required|string',
         'password' => 'required|string',
     ]);
- 
-  
 
-    if (Auth::guard('nikitos_user')->attempt(['name' => $request->name, 'password' => $request->password])) {
-        $user = Auth::guard('nikitos_user')->user();
-        
+    if (Auth::guard('nikitos_user')->attempt($credentials)) {
+        $request->session()->regenerate();
+
         return redirect()->route('pedido');
     }
-  
 
-    
-
-      return back()->withErrors([
+    return back()->withErrors([
         'name' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-      ]);
-    }
+    ]);
+}
  
 
    public function salir(Request $request){
