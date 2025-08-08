@@ -17,6 +17,9 @@
 @section('title', 'Casa')
 
 @section('content')
+<!-- color fondo  -->
+<div class="absolute top-0 left-0 bg-[#F5F5F5] h-full md:h-[2614px] w-full -z-10"></div>
+
 <!-- Video -->
 <div class="relative h-[768.25px] w-full ">
     <video autoplay muted loop playsinline class=" top-0 left-0 w-full h-full object-cover">
@@ -41,7 +44,7 @@
 
 <!-- Nosotros -->
 <div class="h-[830px] w-full relative mt-[-200px] md:mt-[-250px]">
-    <img src="{{ $casa->banner_foto }}" alt="" class="absolute w-full h-full object-center ">
+    <img src="{{ $casa->banner_foto }}" alt="" class=" w-full h-full object-center ">
     <div class="absolute inset-0 flex flex-col justify-center text-[#FFFFFF] max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] gap-10">
         <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>
         <div class="w-1/2">
@@ -52,11 +55,11 @@
 </div>
 
 <!-- Categorías -->
-<div class="h-full max-w-[1258px] mx-auto w-full  px-[5%] lg:px-[0%] flex flex-col gap-6">
+<div class="h-full max-w-[1258px] mx-auto w-full  px-[5%] lg:px-[0%] flex flex-col gap-6 ">
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo1 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($categorias->take(4) as $categoria)
-            <div class="relative group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-center rounded-[8px] overflow-hidden">
+            <a href="{{ route('producto.categoria', $categoria->id) }}" class="relative group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-center rounded-[8px] overflow-hidden">
                 <!-- Fondo con hover oscuro -->
                 <div class="absolute inset-0 transition duration-300 group-hover:brightness-90" style="background-color:{{ $categoria->color_categoria }}"></div>
 
@@ -68,12 +71,12 @@
                     <h1 class="text-white nunitosans font-[700] text-[25px]">{{ $categoria->nombre_categoria }}</h1>
 
                     <!-- Enlace con subrayado animado -->
-                    <a href="{{ route('producto.categoria', $categoria->id) }}" class="nunitosans font-[600] text-[16px] text-white mt-2 relative group-hover:text-white transition">
+                    <div class="nunitosans font-[600] text-[16px] text-white mt-2 relative group-hover:text-white transition">
                         Ver todos
                         <span class="block h-[2px] w-0 group-hover:w-3/5 transition-all duration-300 bg-white mx-auto mt-1"></span>
-                    </a>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
     <div class="w-full flex justify-center">
@@ -86,7 +89,7 @@
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo2 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach($agrupados as $producto)
-            <div class="group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-between border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
+            <a href="{{ route('producto.detalle', $producto->id) }}" class="group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-between border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
                 <div class="h-[179px] w-full p-4 flex justify-center">
                     <img src="{{ $producto->producto_foto ?? $producto->categoria->foto_categoria }}" alt="{{ $producto->producto_nombre }}" class="h-full object-center">
                 </div>
@@ -94,11 +97,11 @@
                 <h1 class="text-black nunitosans font-[700] text-[21px]">{{ $producto->producto_nombre }}</h1>
 
                 <!-- Enlace con línea animada -->
-                <a href="{{ route('producto.detalle', $producto->id) }}" class="nunitosans font-[600] text-[16px]  relative group-hover:text-black transition">
+                <div class="nunitosans font-[600] text-[16px]  relative group-hover:text-black transition">
                     Ver producto
                     <span class="block h-[2px] w-0 group-hover:w-2/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
-                </a>
-            </div>
+                </div>
+            </a>
         @endforeach
     </div>
 </div>
@@ -108,7 +111,7 @@
     <h1 class="nunitosans font-[700] text-[45px]">{{ $casa->titulo3 }}</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($recetas->take(3) as $receta)
-    <div class="group h-[422px] sm:w-[403px] flex flex-col border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden p-4">
+    <a href="{{ route('receta.detalle', $receta->id) }}" class="group h-[422px] sm:w-[403px] flex flex-col border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden p-4">
         
         <div class="h-[255px] w-full ">
             <img src="{{ $receta->receta_foto }}" alt="{{ $receta->receta_nombre }}" class="h-full w-full object-cover rounded-t-[8px]">
@@ -117,14 +120,16 @@
         <div class="flex-1 flex flex-col items-center justify-center text-center px-4 py-3 gap-6">
             <h1 class="nunitosans font-[700] text-[24px]">{{ $receta->receta_nombre }}</h1>
 
-            <a href="{{ route('receta.detalle', $receta->id) }}" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+            <div class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
                 Ver receta
                 <span class="block h-[2px] w-0 group-hover:w-3/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
-            </a>
+            </div>
         </div>
-    </div>
+    </a>
         @endforeach
     </div>
 </div>
+
+
 
 @endsection

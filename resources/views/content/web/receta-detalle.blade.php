@@ -25,7 +25,7 @@
     <div class=" md:w-1/2">
         <img src="{{$receta->receta_foto}}" alt="" class="h-full w-full rounded-[12px] md:rounded-[0px] md:rounded-r-[12px] flex-shrink-0">
     </div>
-    <div class="h-full w-full md:w-1/2 flex flex-col gap-6">
+    <div class="h-full w-full md:w-1/2 flex flex-col gap-6 px-[5%] lg:px-[0%]">
         <h1 class="nunito text-[35px] font-[700] text-[#030303]">{{$receta->receta_nombre}}</h1>
         <div>
             <h3 class="nunitosans text-[18px] font-[700] text-[#5C5C5C]">Tiempo de preparación</h3>
@@ -80,7 +80,7 @@
         <h1 class="nunitosans text-[28px] font-[700] text-[#030303]">Otras recetas</h1>
         <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($otrasRecetas as $receta)
-            <div class="group h-[422px] sm:w-[403px] flex flex-col border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden p-4">
+            <a href="{{ route('receta.detalle', $receta->id) }}" class="group h-[422px] sm:w-[403px] flex flex-col border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden p-4">
                 
                 <div class="h-[255px] w-full ">
                     <img src="{{ $receta->receta_foto }}" alt="{{ $receta->receta_nombre }}" class="h-full w-full object-cover rounded-t-[8px]">
@@ -89,12 +89,12 @@
                 <div class="flex-1 flex flex-col items-center justify-center text-center px-4 py-3 gap-6">
                     <h1 class="nunitosans font-[700] text-[24px]">{{ $receta->receta_nombre }}</h1>
 
-                    <a href="{{ route('receta.detalle', $receta->id) }}" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+                    <div class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
                         Ver receta
                         <span class="block h-[2px] w-0 group-hover:w-3/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
-                    </a>
+                    </div>
                 </div>
-            </div>
+            </a>
             @endforeach
         </div>
             

@@ -35,7 +35,6 @@
     @foreach ($layouts as $layout)
      <style>
         .footer-layout{
-            height: 451px;
             background-image: url("{{$layout->footer_url}}");
             background-size: cover;
             background-repeat: no-repeat;
@@ -47,7 +46,7 @@
 
     <!-- navbar -->
         <nav class="fixed top-0 left-0 w-full z-50">
-        <div id="navbar" class="nav-layout bg-[#FFFFFF] shadow-md flex items-center justify-between mx-auto px-5 max-w-[1258px] h-[100px]">
+        <div id="navbar" class="nav-layout bg-[#FFFFFF] shadow-md flex items-center justify-between mx-auto px-10 max-w-[1258px] h-[100px]">
             
             <!-- Logo -->
             <img src="{{$layout->logo_url}}" alt="Logo" class="h-[67px] w-[138px] flex-shrink-0">
@@ -320,9 +319,9 @@
     <!-- footer -->
     
 
-    <footer class="footer-layout flex flex-col justify-between ">
+   <footer class="footer-layout h-[600px] md:h-[451px] flex flex-col justify-between ">
 
-        <div class="h-full flex flex-wrap justify-center lg:justify-between  text-black ">
+        <div class="h-full flex flex-wrap justify-center lg:justify-between  text-black pt-10 mb:pt-0">
             <div class="content-center basis-full  lg:basis-1/4 flex flex-col items-center justify-center gap-6">
                 <div>
                     <img src="{{$layout->logo_url}}" alt="" class="h-[67px] w-[140px]">
@@ -353,7 +352,7 @@
             </div>
             <div class="content-center basis-full  lg:basis-1/4 space-y-4 flex flex-col items-center lg:block">
                 <h3 class="nunitosans font-[700]">Suscribete al Newsletter</h3>
-                <form class="flex  h-[45px] w-[298px]">
+                <form class="flex justify-center md:justify-start h-[45px] w-full md:w-[298px]">
                     <input type="email" placeholder="Email" class="nunitosans font-[400] rounded-l-xl px-4 text-black placeholder-black focus:outline-none">
                     <button type="submit" class="bg-white text-orange-500 rounded-r-xl px-4 flex items-center justify-center">
                         <i class="fa-solid fa-arrow-right h-[24px] w-[24px] mt-2"></i>
@@ -363,7 +362,7 @@
             <div class="content-center basis-full  lg:basis-1/4 flex flex-col items-center lg:block ">
                 @foreach($contactos as $contacto)
                 <h3 class="nunitosans font-[700]">Contacto</h3>
-                <div class="space-y-4 pt-6 flex flex-col items-center lg:items-start">
+                <div class="space-y-4 pt-6 flex flex-col items-start px-[5%] lg:px-[0%]">
                     <div class="flex space-x-1">
                         <i class="fa-solid fa-location-dot text-white h-[20px] w-[20px]"></i><a href="{{$contacto->ubicacion_link}}" class="nunitosans font-[400]">{{$contacto->ubicacion}}</a>
                     </div>

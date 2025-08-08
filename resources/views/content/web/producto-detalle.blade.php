@@ -51,7 +51,7 @@
                             <h1 class="text-[30px] text-[#030303] font-[700]">{{$producto->producto_nombre}}</h1>
                             <p class="text-[18px] text-[#5C5C5C] font-[400]">{{$producto->producto_descripcion}}</p>
                         </div>
-                        <div class="text-[16px] text-[#5C5C5C] leading-relaxed">
+                        <div class="h-full flex flex-col justify-center text-[16px] text-[#5C5C5C] gap-2 md:gap-4 ">
                             <div>
                                 <h3 class="font-[700]">Código</h3>
                                 <p class="font-[400]">{{$producto->producto_codigo}}</p>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     @foreach($otrosProductos as $producto)
-                    <div class="group h-[321px] sm:w-[297px] p-6 flex flex-col justify-between border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden">
+                    <a href="{{ route('producto.detalle', $producto->id) }}" class="group h-[321px] sm:w-[297px] p-6 flex flex-col justify-between border border-[#DCDCDC] rounded-[8px] bg-white overflow-hidden">
                         
                         <div class="h-[179px] w-full p-4 flex justify-center">
                             <img src="{{ $producto->producto_foto }}" alt="{{ $producto->producto_nombre }}" class="h-full object-center">
@@ -96,12 +96,12 @@
                             <h3 class="text-[13px] font-[800]" style="color:{{$producto->categoria->color_categoria}}">{{$producto->categoria->nombre_categoria}}</h3>
                             <h1 class="nunitosans font-[700] text-[24px]">{{ $producto->producto_nombre }}</h1>
 
-                            <a href="{{ route('producto.detalle', $producto->id) }}" class="nunitosans text-[#030303] font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+                            <div class="nunitosans text-[#030303] font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
                                 Ver producto
                                 <span class="block h-[2px] w-0 group-hover:w-2/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
-                            </a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     @endforeach
                 </div>
             </div>

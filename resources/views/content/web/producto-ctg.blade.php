@@ -39,9 +39,9 @@
         @endforeach
         </div>
         <!-- productos  -->
-        <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 md:mt-0">
             @foreach($categoria->productos as $producto)
-                <div class="group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-between border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
+                <a href="{{ route('producto.detalle', $producto->id) }}" class="group h-[321px] sm:w-[297px] p-6 flex flex-col items-center text-center justify-between border border-[#DCDCDC] rounded-[8px]" style="background-color:#FFFFFF">
                     <div class="h-[179px] w-full p-4 flex justify-center">
                         <img src="{{ $producto->producto_foto ?? $producto->categoria->foto_categoria }}" alt="{{ $producto->producto_nombre }}" class="h-full object-cover">
                     </div>
@@ -49,11 +49,11 @@
                     <h1 class="text-black nunitosans font-[700] text-[21px]">{{ $producto->producto_nombre }}</h1>
 
                     <!-- Enlace con línea animada -->
-                    <a href="{{ route('producto.detalle', $producto->id) }}" class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
+                    <div class="nunitosans font-[600] text-[16px] mt-2 relative group-hover:text-black transition">
                         Ver producto
                         <span class="block h-[2px] w-0 group-hover:w-2/5 transition-all duration-300 bg-black mx-auto mt-1"></span>
-                    </a>
-                </div>
+                    </div>
+                </a>
             @endforeach
         </div>
     </div>
