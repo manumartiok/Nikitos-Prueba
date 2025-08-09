@@ -8,6 +8,7 @@ use App\Models\Ingrediente;
 use App\Models\Preparacion;
 use App\Http\Controllers\NikitoUserController;
 use App\Http\Controllers\HistoricoController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,11 +112,12 @@ $controller_path = 'App\Http\Controllers';
     Route::get('/pedidos', $controller_path . '\PedidoController@index')->name('pages-pedidos'); 
     Route::get('/pedidos/show/{pedido_id}', $controller_path . '\PedidoController@show')->name('pages-pedidos-show');
     Route::post('/pedidos/update', $controller_path . '\PedidoController@update')->name('pages-pedidos-update');
-    Route::get('/pedidos/destroy/{pedido_id}', $controller_path . '\PedidoController@destroy')->name('pages-preparacion-destroy');
+    Route::get('/pedidos/destroy/{pedido_id}', $controller_path . '\PedidoController@destroy')->name('pages-pedidos-destroy');
     Route::get('/pedidos/switch/{pedido_id}', $controller_path . '\PedidoController@switch')->name('pages-pedidos-switch'); 
 });
 
     Route::post('/pedidos/store', $controller_path . '\PedidoController@store')->name('pages-pedidos-store');
+    Route::get('/pedidos/repetir/{id}', [PedidoController::class, 'repetir'])->name('pedidos.repetir');
 
 
 Route::get('/home', function () {
@@ -169,6 +171,8 @@ Route::middleware(['auth:nikitos_user'])->group(function () {
         $producto=Producto::with('categoria')->get();
         return view('content.web.pedido',compact ('producto'));
     })->name('pedido');
+
+    Route::get('/pedido/pdf/{pedido_id}', [PedidoController::class, 'generarPdf'])->name('pedido.pdf');
 
     Route::get('/lista-precios', function () {
         return view('content.web.lista-precios');

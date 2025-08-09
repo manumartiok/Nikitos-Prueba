@@ -34,10 +34,10 @@
                 <td class="text-left">{{$pedido->id}}</td>
                 <td class="">{{$pedido->fecha_pedido}}</td>
                 <td class="text-left">
-                    <button class="flex items-center justify-center h-[42px] w-[141px] text-[#FFA221] font-[600] border border-[#FFA221] rounded-[20px]">Ver detalle</button>
+                    <a href="{{ route('pedido.pdf', $pedido->id) }}" class="flex items-center justify-center h-[42px] w-[141px] text-[#FFA221] font-[600] border border-[#FFA221] rounded-[20px]">Ver detalle</a>
                 </td>
                 <td class="text-right">
-                    <button class="flex items-center justify-center h-[42px] w-[141px] text-[#FFFFFF] font-[600] bg-[#FFA221] rounded-[20px]">Repetir pedido</button>
+                    <a href="{{ route('pedidos.repetir', $pedido->id) }}" class="flex items-center justify-center h-[42px] w-[141px] text-[#FFFFFF] font-[600] bg-[#FFA221] rounded-[20px]">Repetir pedido</a>
                 </td>
             </tr>
             @endforeach

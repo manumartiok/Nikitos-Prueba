@@ -26,41 +26,41 @@ $productos = App\Models\Producto::all();
                 <div class="w-full flex flex-col gap-6">
                     <div class="w-full flex flex-col nunitosans text-[#5C5C5C] font-[400px] gap-4">
                         <label for="fecha" class="text-[16px]">Fecha*</label>
-                        <input type="date" id="fecha" name="fecha_pedido" class="h-[45px] p-3 text-[14px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="date" id="fecha" name="fecha_pedido" value="{{ old('fecha_pedido', isset($pedidoOriginal) ? $pedidoOriginal->fecha_pedido : '') }}" class="h-[45px] p-3 text-[14px] border border-[#DCDCDC] rounded-[8px]" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="localidad" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Localidad*</label>
-                        <input type="text" id="localidad" name="localidad" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="localidad" name="localidad" value="{{ old('localidad', isset($pedidoOriginal) ? $pedidoOriginal->localidad : '') }}" class="h-[45px] border border-[#DCDCDC] rounded-[8px] p-2" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="horario" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Horario*</label>
-                        <input type="text" id="horario" name="horario" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="horario" name="horario" value="{{ old('horario', isset($pedidoOriginal) ? $pedidoOriginal->horario : '') }}" class="h-[45px] border border-[#DCDCDC] rounded-[8px] p-2" required>
                     </div>
                 </div>
                 <div class="w-full flex flex-col gap-6">
                     <div class="w-full flex flex-col gap-4">
                         <label for="razon_social" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Razon social*</label>
-                        <input type="text" id="razon_social" name="razon_social" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="razon_social" name="razon_social" value="{{ old('razon_social', isset($pedidoOriginal) ? $pedidoOriginal->razon_social : '') }}" class="h-[45px] border border-[#DCDCDC] rounded-[8px] p-2" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="codigo" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Código de cliente*</label>
-                        <input type="text" id="codigo" 	name="codigo_cliente" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="codigo" 	name="codigo_cliente" value="{{ old('codigo_cliente', isset($pedidoOriginal) ? $pedidoOriginal->codigo_cliente : '') }}" class="h-[45px] border border-[#DCDCDC] rounded-[8px] p-2" required>
                     </div>
                     <div class="w-full flex flex-col gap-4">
                         <label for="pago" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Condiciones de pago*</label>
-                        <input type="text" id="pago" name="condiciones_pago" class="h-[45px] border border-[#DCDCDC] rounded-[8px]" required>
+                        <input type="text" id="pago" name="condiciones_pago" value="{{ old('condiciones_pago', isset($pedidoOriginal) ? $pedidoOriginal->condiciones_pago : '') }}" class="h-[45px] border border-[#DCDCDC] rounded-[8px] p-2" required>
                     </div>
                 </div>
             </div>
             <div class="w-full md:w-1/2 flex flex-col gap-6">
                 <div class="w-full flex flex-col gap-4">
                     <label for="observaciones" class="nunitosans text-[16px] text-[#5C5C5C] font-[400px]">Observaciones*</label>
-                    <textarea class="flex-grow-1 border border-[#DCDCDC] rounded-[8px] min-h-[146px]" name="observaciones" rows="3" id="observaciones" required></textarea>
+                    <textarea class="flex-grow-1 border border-[#DCDCDC] rounded-[8px] min-h-[146px] p-2" name="observaciones" value="{{ old('observaciones', isset($pedidoOriginal) ? $pedidoOriginal->observaciones : '') }}" rows="3" id="observaciones" required></textarea>
                 </div>
                 <div class="w-full flex flex-col gap-4 nunitosans text-[#5C5C5C] font-[400px]">
                     <label for="" class="text-[18px]">¿Queres subir un archivo?*</label>
                     <div class="relative w-full">
-                        <input type="file" id="fileInput" name="archivo" class="absolute inset-0 opacity-0 z-10 cursor-pointer" required>
+                        <input type="file" id="fileInput" name="archivo" value="{{ old('archivo', isset($pedidoOriginal) ? $pedidoOriginal->archivo : '') }}" class="absolute inset-0 opacity-0 z-10 cursor-pointer" required>
                         <div class="h-[45px] border border-[#EAEAEA] rounded-[12px] text-[14px] text-[#5C5C5C] font-[400] flex justify-between items-center px-4">
                             <span id="fileName" class="truncate">Seleccionar un archivo</span>
                             <i class="fa-solid fa-arrow-up-from-bracket text-[#FFA221]"></i>
@@ -108,11 +108,11 @@ $productos = App\Models\Producto::all();
                             <td class="text-center">{{ $producto->producto_nombre }}</td>
                             <td class="text-center">{{ $producto->producto_tamaños }}</td>
                             <td class="text-center">
-                                <input type="number" name="cantidad[{{ $producto->id }}]" min="0" value="0" class="w-[99px] h-[38px] border border-[#DCDCDC] rounded-[8px] text-center" />
+                                <input type="number" name="cantidad[{{ $producto->id }}]" min="0" value="{{ old('cantidad.' . $producto->id, $productosSeleccionados[$producto->id] ?? 0) }}" class="w-[99px] h-[38px] border border-[#DCDCDC] rounded-[8px] text-center" />
                             </td>
                             <td class="text-center">
                                 <label class="relative inline-block w-[38px] h-[38px] border border-[#DCDCDC] rounded-[8px] cursor-pointer">
-                                    <input type="checkbox" name="productos_seleccionados[]"  value="{{ $producto->id }}" class="peer absolute opacity-0 w-full h-full cursor-pointer">
+                                <input type="checkbox" name="productos_seleccionados[]"  value="{{ $producto->id }} @checked(old('productos_seleccionados') ? in_array($producto->id, old('productos_seleccionados', [])) : isset($productosSeleccionados[$producto->id]))" class="peer absolute opacity-0 w-full h-full cursor-pointer">
                                     <span 
                                         class="pointer-events-none absolute top-1/2 left-1/2 w-[18px] h-[18px] bg-[#FFA221] rounded-[4px] scale-0 peer-checked:scale-100 transition-transform -translate-x-1/2 -translate-y-1/2">
                                     </span>

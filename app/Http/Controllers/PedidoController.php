@@ -8,6 +8,7 @@ use App\Models\NikitoUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PedidoController extends Controller
 {
@@ -127,7 +128,20 @@ class PedidoController extends Controller
         $pedidos = Pedido::findOrFail($pedidos_id);
         $pedidos->load('productos', 'trabajador');
 
-        $pdf = PDF::loadView('content.pages.pdf-pedido', compact('pedidos'));
+        $pdf = PDF::loadView('content.web.pdf', compact('pedidos'));
         return $pdf->download('pedido_' . $pedidos->id . '.pdf');
     }
+
+    public function repetir($pedidos_id)
+{
+    $pedidos = Pedido::with('productos')->findOrFail($pedidos_id);
+
+    // Si querés, acá podés pasar directamente los productos con sus cantidades
+    $productosSeleccionados = [];
+    foreach ($pedidos->productos as $producto) {
+        $productosSeleccionados[$producto->id] = $producto->pivot->cantidad;
+    }
+
+    return view('content.web.pedido', compact('pedidos', 'productosSeleccionados'))->with('pedidoOriginal', $pedidos);
+}
 }

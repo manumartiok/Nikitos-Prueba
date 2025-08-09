@@ -17,7 +17,6 @@ $configData = Helper::appClasses();
           <th>Id</th>
           <th>Cliente</th>
           <th>Localidad</th>
-          <th>Activo</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -27,15 +26,6 @@ $configData = Helper::appClasses();
                 <td>{{$pedido->id}}</td>
                 <td>{{$pedido->codigo_cliente}}</td>
                 <td>{{$pedido->localidad}}</td>
-                <td>
-                  @if ($pedido->active)
-                  <a href="{{route('pages-pedidos-switch', $pedido->id)}}">
-                  <span class="badge bg-primary">Activo</span></a>
-                  @else
-                  <a href="{{route('pages-pedidos-switch', $pedido->id)}}">
-                  <span class="badge bg-danger">Inactivo</span></a>
-                  @endif
-                </td>
                 <td><a href="{{route('pages-pedidos-show', $pedido->id)}}">Editar</a> | <a href="{{route('pages-pedidos-destroy', $pedido->id)}}">Borrar</a></td>
             </tr>
         @endforeach
