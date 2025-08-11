@@ -12,7 +12,7 @@ $productos = App\Models\Producto::all();
     <!-- datos -->
     <div class="w-full flex flex-col mt-[202px] mb-[46px] gap-6">
         <h1 class="nunito text-[35px] text-[#030303] font-[700]">Datos del pedido</h1>
-        <h3 class="w-1/2 nunitosans text-[16px] text-[#5C5C5C] font-[400] pr-[5%] leading-relaxed">
+        <h3 class="w-full md:w-1/2 nunitosans text-[16px] text-[#5C5C5C] font-[400] pr-[5%] leading-relaxed">
             Por favor tenga a bien de rellenar los casilleros con la información requerida, de lo contrario no se podra enviar el mismo.
         </h3>
     </div>
@@ -91,7 +91,7 @@ $productos = App\Models\Producto::all();
             <table class="mt-[19px] w-full rounded-t-[8px] overflow-hidden">
                 <thead class="w-full h-[52px] bg-[#F5F5F5] nunitosans h-[16px] text-[#030303] font-[600] border-b border-[#DCDCDC]">
                     <tr>
-                        <th></th>
+                        <th class=""></th>
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Presentacion</th>

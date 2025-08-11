@@ -43,7 +43,7 @@
 </div>
 
 <!-- Nosotros -->
-<div class="h-[1200px] md:h-[830px] w-full relative mt-[-400px] md:mt-[-303px]">
+<div class="h-[1400px] md:h-[830px] w-full relative mt-[-450px] md:mt-[-303px]">
     <img src="{{ $casa->banner_foto }}" alt="" class=" w-full h-full object-center ">
     <div class="absolute inset-0 flex flex-col justify-center text-[#FFFFFF] max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] gap-10">
         <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>

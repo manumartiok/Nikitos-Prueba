@@ -44,12 +44,12 @@
             <h1  class="nunitosans text-[28px] font-[700]  text-[#030303]">{!! $nosotros->texto3 !!}</h1>
             <h2 class="nunitosans text-[16px] font-[400]  text-[#5C5C5C] leading-relaxed">{!! $nosotros->descripcion3 !!}</h2>
         </div>
-        <div class="min-w-[481px] min-h-[352px]">
+        <div class="md:min-w-[481px] min-h-[352px]">
             <img src="{{$nosotros->foto3}}" alt="" class="w-[481px] h-[352px] object-cover rounded-[24px] ">
         </div>
     </div>
     <!-- 4 -->
-    <div class="flex md:flex-row flex-col justify-center h-[352px] max-w-[1258px] mx-auto w-full  px-[5%] lg:px-[0%] gap-14 mt-[100px] lg:mt-[0px]">
+    <div class="flex md:flex-row flex-col justify-center h-[352px] max-w-[1258px] mx-auto w-full  px-[5%] lg:px-[0%] gap-14 mt-[170px] lg:mt-[0px]">
         <div class="min-w-[481px] min-h-[352px]   hidden md:flex">
             <img src="{{$nosotros->foto4}}" alt="" class="w-[481px] h-[352px] object-cover rounded-[24px] ">
         </div>  

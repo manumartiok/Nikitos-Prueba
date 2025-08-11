@@ -243,6 +243,7 @@
                <div class="loginModal fixed inset-x-0 hidden flex items-center justify-center">
                     <div class="bg-[#FFFFFF] h-[365px]  w-full p-6 rounded-[12px] ">
                         <form class="loginForm h-full  flex flex-col justify-between py-6 gap-4" method="POST" action="{{ route('inicia-sesion') }}">
+                            @csrf
                             <div class="flex flex-col gap-2">
                                 <label for="name" class="block nunitosans text-[16px] text-[#5C5C5C] text-font-[400]">Usuario</label>
                                 <input type="text" id="name" name="name" class="h-[45px]  p-2 w-full border border-[#DCDCDC] rounded-[8px] nunitosans text-[12px] text-[#5C5C5C] font-[400]" placeholder="marianor">
@@ -395,7 +396,7 @@
     
     </footer>
 @endforeach
-    
+        
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
