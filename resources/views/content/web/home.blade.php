@@ -37,20 +37,20 @@
               <i class="fa-solid fa-chevron-right"></i>
 
             </button>
-            <a href="#" class="nunitosans rounded-[20px] border border-[#FFFFFF] h-[42px] w-[194px] font-[600] text-[16px] flex items-center justify-center hover:scale-105 transition-transform duration-300">Ver productos</a>
+            <a href="{{ route('productos') }}" class="nunitosans rounded-[20px] border border-[#FFFFFF] h-[42px] w-[194px] font-[600] text-[16px] flex items-center justify-center hover:scale-105 transition-transform duration-300">Ver productos</a>
         </div>
     </div>
 </div>
 
 <!-- Nosotros -->
-<div class="h-[830px] w-full relative mt-[-200px] md:mt-[-303px]">
+<div class="h-[1200px] md:h-[830px] w-full relative mt-[-400px] md:mt-[-303px]">
     <img src="{{ $casa->banner_foto }}" alt="" class=" w-full h-full object-center ">
     <div class="absolute inset-0 flex flex-col justify-center text-[#FFFFFF] max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] gap-10">
         <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>
-        <div class="w-1/2">
+        <div class="w-2/3 md:w-1/2">
             <h2 class="nunitosans font-[400] text-[20px] leading-relaxed">{!!$casa->banner_tmenor!!}</h2>
         </div>
-        <button class="nunitosans font-[600] text-[16px] h-[42px] w-[164px] rounded-[20px] text-[#FFA221] bg-[#FFFFFF] hover:scale-105 transition-transform duration-300">Mas info</button>
+        <a href="{{ route('nosotros') }}" class="nunitosans flex items-center justify-center font-[600] text-[16px] h-[42px] w-[164px] rounded-[20px] text-[#FFA221] bg-[#FFFFFF] hover:scale-105 transition-transform duration-300">Mas info</a>
     </div>
 </div>
 
