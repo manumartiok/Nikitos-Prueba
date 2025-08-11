@@ -87,14 +87,8 @@ class ContactoController extends Controller
             $contactos->telefono=$request->telefono;
             $contactos->mail=$request->mail;
             $contactos->horarios=$request->horarios;
-        
-        if ($request->hasFile('foto_ubi')) {
-            $file = $request->file('foto_ubi');    
-            $name = time() . '.' . $file->getClientOriginalName();
-            $filePath = 'public/images/' . $name; 
-            Storage::put($filePath, file_get_contents($file));
-            $contactos->foto_ubi = Storage::url($filePath);  
-        }
+            $contactos->latitud=$request->latitud;
+            $contactos->longitud=$request->longitud;
 
         $contactos->save();
 

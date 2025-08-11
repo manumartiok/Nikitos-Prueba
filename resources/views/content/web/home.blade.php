@@ -1,8 +1,8 @@
 @php
 
     $casa = App\Models\Home::first(); 
-    $categorias = App\Models\CategoriaProducto::all();
-    $recetas = App\Models\Receta::all();
+    $categorias = App\Models\CategoriaProducto::where('active',1)->get();
+    $recetas = App\Models\Receta::where('active',1)->get();
     $productos = App\Models\Producto::with('categoria')->where('active', 1)->get();
 
     $agrupados = App\Models\Producto::with('categoria')
@@ -43,7 +43,7 @@
 </div>
 
 <!-- Nosotros -->
-<div class="h-[830px] w-full relative mt-[-200px] md:mt-[-250px]">
+<div class="h-[830px] w-full relative mt-[-200px] md:mt-[-303px]">
     <img src="{{ $casa->banner_foto }}" alt="" class=" w-full h-full object-center ">
     <div class="absolute inset-0 flex flex-col justify-center text-[#FFFFFF] max-w-[1258px] mx-auto w-full px-[5%] lg:px-[0%] gap-10">
         <h1 class="nunitosans font-[700] text-[45px] ">{!!$casa->banner_tmayor!!}</h1>

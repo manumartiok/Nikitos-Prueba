@@ -42,10 +42,10 @@
     },
 
     {
-      "url": "/contacto/show/{{ $contactos ? $contactos->id : 1 }}",
+      "url": "/distribuidores",
       "icon": "menu-icon tf-icons bx bx-file",
       "name": "Distribuidores",
-      "slug": "pages-contacto-show"
+      "slug": "pages-distribuidores"
     },
 
 

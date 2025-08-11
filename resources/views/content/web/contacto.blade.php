@@ -162,24 +162,24 @@
         </div>
     </div>
     <!-- datos y mapa  -->
-    <div class=" flex flex-col md:flex-row ">
+    <div class=" flex flex-col md:flex-row mt-6 md:mt-[120px] h-full gap-6">
         <div class="w-full md:w-1/3 flex flex-col gap-6">
             <h2 class="nunitosans text-[18px] text-[#000000] font-[700]">Datos de contacto</h2>
-            <div class="flex">
-                <i class="fa-solid fa-location-dot text-[#FFA221] h-[20px] w-[20px]"></i><a href="{{$contacto->ubicacion_link}}" class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->ubicacion}}</a>
+            <div class="flex gap-3">
+                <i class="fa-solid fa-location-dot text-[#FFA221]"></i><a href="{{$contacto->ubicacion_link}}" class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->ubicacion}}</a>
             </div>
-            <div class="flex">
-                <i class="fa-solid fa-phone text-[#FFA221] h-[20px] w-[20px]"></i><p class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->telefono}}</p>
+            <div class="flex gap-2">
+                <i class="fa-solid fa-phone text-[#FFA221]"></i><p class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->telefono}}</p>
             </div>
-            <div class="flex">
-                <i class="fa-regular fa-envelope text-[#FFA221] h-[20px] w-[20px]"></i><p class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->mail}}</p>
+            <div class="flex gap-2">
+                <i class="fa-regular fa-envelope text-[#FFA221]"></i><p class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->mail}}</p>
             </div>
-            <div class="flex">
-                <i class="fa-solid fa-clock text-[#FFA221] h-[20px] w-[20px]"></i><p class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->horarios}}</p>
+            <div class="flex gap-2">
+                <i class="fa-solid fa-clock text-[#FFA221]"></i><p class="nunitosans font-[400] text-[16px] text-[#5C5C5C]">{{$contacto->horarios}}</p>
             </div>
         </div>
-        <div class="w-full md:w-2/3">
-
+        <div class="w-full h-full md:h-[520px]  md:w-2/3">
+            <div id="mapaUnico" class="w-full h-full min-h-[300px] rounded border"></div>
         </div>
     </div>
 </div>
@@ -214,5 +214,39 @@
 
         activar(btn1, btn2, form1, form2);
     });
+
+    function initMap() {
+    const ubicacion = { lat: parseFloat("{{ $contacto->latitud }}"), lng: parseFloat("{{ $contacto->longitud }}") };
+
+    const grayStyle = [
+        { elementType: 'geometry', stylers: [{ color: '#f5f5f5' }] },
+        { elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#616161' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#f5f5f5' }] },
+        {
+            featureType: 'administrative',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'off' }]
+        }
+    ];
+
+    const mapa = new google.maps.Map(document.getElementById("mapaUnico"), {
+        zoom: 15,
+        center: ubicacion,
+        styles: grayStyle
+    });
+
+    new google.maps.Marker({
+        position: ubicacion,
+        map: mapa,
+        icon: {
+                    url: '/assets/img/Group 3788.png',
+                    scaledSize: new google.maps.Size(50, 68),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(25, 68)
+                }
+    });
+}
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZUlidy4Exa3bvZLRh4qgqx4lwlLy6khw&callback=initMap&libraries=geometry,places" async defer></script>
 @endsection

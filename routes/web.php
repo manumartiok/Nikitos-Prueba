@@ -58,6 +58,15 @@ $controller_path = 'App\Http\Controllers';
     Route::get('/contacto/show/{contacto_id}', $controller_path . '\ContactoController@show')->name('pages-contacto-show');
     Route::post('/contacto/update', $controller_path . '\ContactoController@update')->name('pages-contacto-update');
 
+    // Menu Distribuidores
+    Route::get('/distribuidores', $controller_path . '\DistribuidorController@index')->name('pages-distribuidores'); 
+    Route::get('/distribuidores/create', $controller_path . '\DistribuidorController@create')->name('pages-distribuidores-create');
+    Route::post('/distribuidores/store', $controller_path . '\DistribuidorController@store')->name('pages-distribuidores-store');
+    Route::get('/distribuidores/show/{categoria_id}', $controller_path . '\DistribuidorController@show')->name('pages-distribuidores-show');
+    Route::post('/distribuidores/update', $controller_path . '\DistribuidorController@update')->name('pages-distribuidores-update');
+    Route::get('/distribuidores/destroy/{categoria_id}', $controller_path . '\DistribuidorController@destroy')->name('pages-distribuidores-destroy');
+    Route::get('/distribuidores/switch/{categoria_id}', $controller_path . '\DistribuidorController@switch')->name('pages-distribuidores-switch');
+
     // Menu Categorias
     Route::get('/categoria', $controller_path . '\CategoriaProductoController@index')->name('pages-categoria'); 
     Route::get('/categoria/create', $controller_path . '\CategoriaProductoController@create')->name('pages-categoria-create');

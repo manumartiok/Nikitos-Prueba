@@ -26,7 +26,7 @@ $configData = Helper::appClasses();
                 <td>{{$pedido->id}}</td>
                 <td>{{$pedido->codigo_cliente}}</td>
                 <td>{{$pedido->localidad}}</td>
-                <td><a href="{{route('pages-pedidos-show', $pedido->id)}}">Editar</a> | <a href="{{route('pages-pedidos-destroy', $pedido->id)}}">Borrar</a></td>
+                <td><a href="{{route('pages-pedidos-destroy', $pedido->id)}}">Borrar</a></td>
             </tr>
         @endforeach
       </tbody>

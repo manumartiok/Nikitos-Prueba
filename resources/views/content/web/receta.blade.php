@@ -1,7 +1,7 @@
 @php
 
     $banners = App\Models\Banner::first();
-    $recetas = App\Models\Receta::all();
+    $recetas = App\Models\Receta::where('active',1)->get();
 @endphp
 
 @extends('layouts.web-layout')

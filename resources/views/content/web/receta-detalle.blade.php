@@ -1,7 +1,7 @@
 @php
 
     $banners = App\Models\Banner::first();
-    $recetas = App\Models\Receta::all();
+    $recetas = App\Models\Receta::where('active',1)->get();
 
     // Excluir la receta actual por su id
     $otrasRecetas = $recetas->where('id', '!=', $receta->id)->take(3);

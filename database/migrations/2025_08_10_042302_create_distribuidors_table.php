@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('distribuidors', function (Blueprint $table) {
             $table->id();
-            $table->string('foto_mapa')->nullable();
+            $table->string('nombre');
+            $table->string('provincia');
+            $table->string('ciudad');
+            $table->decimal('latitud', 10, 8);
+            $table->decimal('longitud', 11, 8);
             $table->timestamps();
         });
     }

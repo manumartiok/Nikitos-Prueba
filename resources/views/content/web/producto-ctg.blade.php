@@ -1,7 +1,7 @@
 @php
 
     $banners = App\Models\Banner::first();
-    $categorias = App\Models\CategoriaProducto::all();
+    $categorias = App\Models\CategoriaProducto::where('active',1)->get();
 @endphp
 
 @extends('layouts.web-layout')
@@ -19,7 +19,7 @@
 <!-- Productos  -->
 <div class="flex flex-col h-full max-w-[1258px] mx-auto w-full py-16 px-[5%] lg:px-[0%]  gap-6">
     <div class="w-full flex justify-end ">  
-        <button class="nunitosans h-[42px] w-[243px] rounded-[20px] border border-[#FFA221] text-[#FFA221] text-[16px] font-[600]">Descargar catálogo</button>
+        <button class="nunitosans h-[42px] w-[243px] rounded-[20px] border border-[#FFA221] text-[#FFA221] text-[16px] font-[600] hover:scale-105 transition-transform duration-300">Descargar catálogo</button>
     </div>
     <div class="flex flex-col md:flex-row">
         <!-- categorias  -->

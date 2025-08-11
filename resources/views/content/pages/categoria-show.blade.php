@@ -39,4 +39,5 @@ $configData = Helper::appClasses();
     </div>
     </div-col-lg-12>
 </div>
+
 @endsection

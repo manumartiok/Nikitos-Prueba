@@ -1,7 +1,7 @@
 @php
 
     $banners = App\Models\Banner::first();
-    $categorias = App\Models\CategoriaProducto::all();
+    $categorias = App\Models\CategoriaProducto::where('active',1)->get();
 @endphp
 
 @extends('layouts.web-layout')

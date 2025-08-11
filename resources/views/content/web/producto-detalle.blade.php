@@ -1,9 +1,9 @@
 @php
 
     $banners = App\Models\Banner::first();
-    $categorias = App\Models\CategoriaProducto::all();
+    $categorias = App\Models\CategoriaProducto::where('active',1)->get();
 
-     $otrosProductos = $producto->categoria->productos()->where('id', '!=', $producto->id)->take(3)->get();
+    $otrosProductos = $producto->categoria->productos()->where('id', '!=', $producto->id)->take(3)->get();
 @endphp
 
 @extends('layouts.web-layout')

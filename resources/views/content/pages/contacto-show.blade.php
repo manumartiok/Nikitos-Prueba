@@ -20,14 +20,6 @@ $configData = Helper::appClasses();
             <input type="hidden" name="contacto_id" value="{{ $contacto->id ?? '' }}">
 
             <div class="mb-3">
-              <label class="form-label" for="foto_ubi">Foto </label>
-              @if (!empty($contacto->foto_ubi))
-                <img :src="foto.foto_ubi || '{{  $contacto->foto_ubi }}'" alt="Foto" style="width: 20%;" class="img-thumbnail mb-3">
-              @endif
-              <input type="file" name="foto_ubi" class="form-control" id="foto_ubi" @change="subirFoto"/>
-            </div>
-
-            <div class="mb-3">
               <label class="form-label" for="ubicacion">Ubicacion </label>
               <input type="text" name="ubicacion" value="{{ $contacto->ubicacion }}" class="form-control" id="titulo1" placeholder="ubicacion "/>
             </div>
@@ -50,6 +42,16 @@ $configData = Helper::appClasses();
             <div class="mb-3">
               <label class="form-label" for="horarios">Horarios</label>
               <input type="text" name="horarios" value="{{ $contacto->horarios }}" class="form-control" id="horarios" placeholder="Titulo "/>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="latitud">Latitud</label>
+              <input type="text" name="latitud" value="{{ $contacto->latitud }}" class="form-control" id="latitud" placeholder="Titulo "/>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="longitud">Longitud</label>
+              <input type="text" name="longitud" value="{{ $contacto->longitud }}" class="form-control" id="longitud" placeholder="Titulo "/>
             </div>
 
             <!-- Botón Guardar -->

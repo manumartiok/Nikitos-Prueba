@@ -74,8 +74,7 @@ $productos = App\Models\Producto::all();
 
         <!-- Filtro de categoría -->
     <div class="w-full md:w-1/2 my-[64px]">
-        <select id="filtroCategoria"
-            class="w-full border border-[#DCDCDC] rounded-[8px] px-4 py-[10px] text-sm text-[#5C5C5C] focus:outline-none focus:ring-2 focus:ring-[#FFA221]">
+        <select id="filtroCategoria" class="w-full border border-[#DCDCDC] rounded-[8px] px-4 py-[10px] text-sm text-[#5C5C5C] focus:outline-none focus:ring-2 focus:ring-[]">
             <option value="" disabled selected>Filtrar por categoría:</option>
             @foreach ($categorias as $categoria)
                 <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
