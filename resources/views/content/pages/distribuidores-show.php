@@ -16,7 +16,7 @@ $configData = Helper::appClasses();
       <div class="card-body">
         <form method="POST" action="{{route ('pages-distribuidores-update')}}" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="distribuidores_id" value="{{$distribuidores->id}}">
+            <input type="hidden" name="distribuidor_id" value="{{$distribuidor->id}}">
           <div class="mb-3">
             <label class="form-label" for="basic-default-fullname">Nombre</label>
             <input type="text" name="nombre" value="{{$distribuidor->nombre}}"  class="form-control" id="basic-default-fullname" placeholder="Nombre" required/>

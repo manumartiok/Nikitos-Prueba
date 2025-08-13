@@ -389,7 +389,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="box-border min-h-[67px] h-[67px]  copy flex justify-between items-center px-12">
+        <div class="box-border min-h-[67px] h-[67px]  bg-[#EF9514] flex justify-between items-center px-12">
             <p> © Copyright &copy;<?php echo date("Y");?> Nilitos Snacks. Todos los derechos reservados</p>
             <a href="https://osole.com.ar/">By <span>Osole</span></a>
         </div>
